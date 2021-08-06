@@ -1,0 +1,23 @@
+
+body {
+  margin: 0;
+  background-color: lightgray;
+  // background: linear-gradient(217deg, #EDC7B7, #EEE2DC 70.71%),
+  //             linear-gradient(127deg, #EEE2DC, #AC3B61 70.71%),
+  //             linear-gradient(336deg, #AC3B61, #123C69 70.71%);
+
+  // &.hide-overlay {
+  //   // transform: translateY(-100%);
+  //   // margin-top: -100vh;
+  //   // padding: 0 2rem;
+  //   // height: 0;
+  //   // overflow: hidden;
+  //   // opacity: 0;
+  //   transform: translateY(-100vh);
+  //   transition: transform 1s;
+  // }
+}
+
+.site-container {
+  margin: 2rem;
+}

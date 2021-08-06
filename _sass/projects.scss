@@ -1,0 +1,155 @@
+.projects-section {
+  margin: 8rem 0 4rem;
+  padding: 0 2rem;
+
+  .header {
+    font-family: "Reenie Beanie";
+    font-size: 5rem;
+    font-weight: 400;
+    color: black;
+    text-align: center;
+    margin: 0 0 2rem;
+  }
+
+  .projects-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 0 auto;
+    min-width: 14.75rem;
+    max-width: 75rem;
+
+    .project-card-container {
+      display: flex;
+      padding: 0.5rem;
+      flex: 0 1 calc(100% - 1rem);
+
+      .project-container {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        border-radius: 4px;
+        background-color: white;
+        width: 100%;
+
+        .title {
+          font-family: "Inconsolata";
+          font-size: 2rem;
+          font-weight: 600;
+          margin-top: 0;
+          margin-bottom: 0.5rem;
+          color: black;
+        }
+
+        .description {
+          font-family: "Inconsolata";
+          font-size: 1rem;
+          font-weight: 200;
+          margin: 0;
+          margin-bottom: 1rem;
+          color: black;
+        }
+
+        .skills-container {
+          display: flex;
+          align-items: center;
+          justify-content: start;
+
+          p {
+            font-family: "Inconsolata";
+            font-size: 0.75rem;
+            font-weight: 200;
+            margin: 0;
+            margin-right: 0.5rem;
+            color: black;
+            border: 1px solid black;
+            padding: 0.5rem;
+            border-radius: 4px;
+          }
+        }
+
+        hr {
+          width: 100%;
+          margin: 1rem 0;
+        }
+
+        .details-container {
+          display: flex;
+
+          .tracking {
+            font-family: "Inconsolata";
+            font-size: 1rem;
+            font-weight: 100;
+            text-transform: uppercase;
+            margin: 0;
+
+            &.completed {
+              color: green;
+            }
+
+            &.in-progress {
+              color: orange;
+            }
+          }
+
+          .spacer {
+            flex: 1 0;
+          }
+
+          .external-link {
+            svg {
+              path {
+                fill: black;
+              }
+            }
+
+            &:hover {
+              svg {
+                path {
+                  fill: gray;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 36rem) {
+  .projects-section {
+    .header {
+      font-size: 6rem;
+      margin-bottom: 3rem;
+    }
+
+    .projects-container {
+      .project-card-container {
+        flex: 0 1 calc(50% - 1rem);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .projects-section {
+    .header {
+      font-size: 7rem;
+    }
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  
+}
+
+@media screen and (min-width: 1200px) {
+  .projects-section {
+    .projects-container {
+      .project-card-container {
+        flex: 0 1 calc(33.3333% - 1rem);
+      }
+    }
+  }
+}

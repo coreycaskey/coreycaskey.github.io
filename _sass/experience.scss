@@ -1,0 +1,84 @@
+.experience-section {
+  margin: 0 auto;
+  padding: 4rem 0;
+  width: 100%;
+  max-width: 1000px;
+  text-align: center;
+
+  .section-title {
+    font-family: "Reenie Beanie";
+    font-size: 4rem;
+    font-weight: 400;
+    margin: 4rem 0;
+  }
+
+  .experience-container {
+    display: flex;
+    flex-direction: row; // change to column for mobile
+    justify-content: center;
+
+    .experience {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-basis: 20%;
+      cursor: pointer;
+
+      .folder-icon {
+        height: 100px;
+        width: 100px;
+
+        &.opened {
+          content: url("../img/folder-opened-outlined.png");
+        }
+      }
+
+      &:hover {
+        .folder-icon {
+          content: url("../img/folder-closed-filled.png");
+
+          &.opened {
+            content: url("../img/folder-opened-filled.png");
+          }
+        }
+      }
+
+      .folder-name {
+        font-family: "Inconsolata";
+        font-size: 1rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .experience-description {
+    margin: 4rem 0 0;
+    font-family: "Inconsolata";
+    font-size: 1rem;
+    font-weight: 400;
+    border: 2px solid black;
+    padding: 2rem;
+    border-radius: 4px;
+    max-height: auto;
+    overflow: hidden;
+    transition: margin 0.5s, overflow 0.5s;
+
+    &.hide {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0;
+      border: none;
+      margin: 0;
+      transition: 0s;
+    }
+
+    .hide--animate {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0;
+      border: none;
+      margin: 0;
+      // transition: 0.5s;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+- interest: Golf
+  icon: ../assets/img/golf-outlined.png
+  alt: Golf Icon
+  class: golf-icon
+
+- interest: Tennis
+  icon: ../assets/img/tennis-outlined.png
+  alt: Tennis Icon
+  class: tennis-icon
+
+- interest: Reading
+  icon: ./assets/img/reading-outlined.png
+  alt: Reading Icon
+  class: reading-icon
+
+- interest: Writing
+  icon: ./assets/img/typewriter-outlined.png
+  alt: Writing Icon
+  class: writing-icon
+
+- interest: Watching TV
+  icon: ./assets/img/tv-outlined.png
+  alt: TV Icon
+  class: tv-icon
+
+- interest: Gaming
+  icon: ./assets/img/controller-outlined.png
+  alt: Gaming Icon
+  class: gaming-icon

@@ -1,0 +1,44 @@
+- skill: Angular
+  rating_value: 100
+  rating_name: Very Comfortable
+  icon: ../assets/img/angular.png
+
+- skill: React
+  rating_value: 25
+  rating_name: Novice
+  icon: ../assets/img/react.png
+
+- skill: HTML
+  rating_value: 100
+  rating_name: Very Comfortable
+  icon: ../assets/img/html.png
+
+- skill: CSS
+  rating_value: 75
+  rating_name: Comfortable
+  icon: ../assets/img/css-test.png
+
+- skill: Javascript
+  rating_value: 75
+  rating_name: Comfortable
+  icon: ../assets/img/javascript.png
+
+- skill: Typescript
+  rating_value: 75
+  rating_name: Comfortable
+  icon: ../assets/img/typescript.png
+
+- skill: Python
+  rating_value: 100
+  rating_name: Very Comfortable
+  icon: ../assets/img/python.png
+
+- skill: Java
+  rating_value: 75
+  rating_name: Comfortable
+  icon: ../assets/img/java.png
+
+- skill: SQL
+  rating_value: 50
+  rating_name: Familiar
+  icon: ../assets/img/sql.png

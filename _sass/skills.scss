@@ -1,0 +1,329 @@
+.skills-section {
+  // margin: 0 0 8rem;
+  padding: 0 2rem;
+
+  .header {
+    font-family: "Reenie Beanie";
+    font-size: 4rem;
+    font-weight: 400;
+    color: black;
+    text-align: center;
+    margin: 4rem 0 2rem;
+  }
+
+  .skills-container {
+    margin: 0 auto;
+    // padding: 0 4rem;
+    // box-sizing: border-box;
+    min-width: 14.75rem;
+    max-width: 64rem;
+
+    .skills-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      font-family: "Inconsolata";
+      font-size: 1rem;
+      font-weight: 400;
+      color: black;
+      // line-height: 1.2rem;
+      letter-spacing: 1px;
+
+      .skill-item {
+        display: flex;
+        align-items: center;
+        margin: 1rem 0;
+
+        .skill-name {
+          display: none;
+        }
+
+        .skill-logo-container {
+          flex-basis: 1.5rem;
+          margin-right: 1rem;
+          text-align: right;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          position: relative;
+
+          &:hover {
+            .tooltip-text {
+              visibility: visible;
+              opacity: 1;
+            }
+          }
+
+          .tooltip-text {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+          }
+
+          .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+          }
+        }
+
+        .skill-rating-bar {
+          height: 0.5rem;
+          background-color: rgba(0.5,0.5,0.5,0.10);
+          border-radius: 0.25rem;
+          flex: 1 1 auto;
+
+          .skill-rating {
+            display: block;
+            height: 0.5rem;
+            background-color: black;
+            border-radius: 0.25rem;
+
+            &.skill-rating--25 {
+              width: 25%;
+            }
+
+            &.skill-rating--50 {
+              width: 50%;
+            }
+
+            &.skill-rating--75 {
+              width: 75%;
+            }
+
+            &.skill-rating--100 {
+              width: 100%;
+            }
+          }
+        }
+
+        .skill-level {
+          // margin-left: 2rem;
+          // flex-basis: 9rem;
+          display: none;
+        }
+      }
+    }
+
+    .scale-container {
+      display: flex;
+      align-items: flex-end;
+      margin-left: 2.5rem;
+
+      .spacer {
+        // margin-top: 2rem;
+        flex: 1 1 auto;
+        // margin-left: 2.5rem;
+        // margin: 0 1rem;
+      }
+
+      p {
+        font-family: "Inconsolata";
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        line-height: 1rem;
+        text-align: center;
+      }
+    }
+
+
+
+    // .test-bar {
+    //   margin-top: 2rem;
+    //   height: 0.125rem;
+    //   background-color: rgb(189, 189, 189);
+    //   flex: 1 1 auto;
+    //   margin-left: 2.5rem;
+    //   position: relative;
+
+    //   // .axis {
+    //   //   width: 100px;
+    //   // }
+
+    //   .tick {
+    //     border-left: 2px solid rgb(189, 189, 189);
+    //     height: 18px;
+    //     top: -8px;
+    //     position: absolute;
+    //   }
+
+    //   .tick:nth-child(1) {
+    //     left: 0%;
+    //   }
+
+    //   .tick:nth-child(2) {
+    //     left: 25%;
+    //   }
+
+    //   .tick:nth-child(3) {
+    //     left: 50%;
+    //   }
+
+    //   .tick:nth-child(4) {
+    //     left: 75%;
+    //   }
+
+    //   .tick:nth-child(5) {
+    //     left: 100%;
+    //   }
+    // }
+
+    // .test-labels {
+    //   flex: 1 1 auto;
+    //   margin-left: 2.5rem;
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: center;
+
+    //   p {
+    //     flex-basis: 25%;
+    //     font-family: "Inconsolata";
+    //     font-size: 10px;
+    //     font-weight: 400;
+    //     letter-spacing: 1px;
+    //     line-height: 1rem;
+    //     text-align: center;
+    //     transform: rotate(90deg);
+    //     padding-left: 1rem;
+    //     vertical-align: center;
+    //     margin: 0;
+    //   }
+    // }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .skills-section {
+    .skills-container {
+      .skills-list {
+        .skill-item {
+          .skill-level {
+            display: initial;
+            margin: 0;
+            margin-left: 1rem;
+            flex-basis: 9rem;
+          }
+        }
+      }
+
+      .scale-container {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .skills-section {
+    .skills-container {
+      padding: 0 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .skills-section {
+    // margin: 0 0 8rem;
+    padding: 0 2rem;
+
+    .header {
+      font-family: "Reenie Beanie";
+      font-size: 4rem;
+      font-weight: 400;
+      color: black;
+      text-align: center;
+      margin: 4rem 0 2rem;
+    }
+
+    .skills-container {
+      margin: 0 auto;
+      padding: 0 4rem;
+      box-sizing: border-box;
+      max-width: 64rem;
+
+      .skills-list {
+        .skill-item {
+          display: flex;
+          align-items: center;
+
+          .skill-name {
+            display: block;
+            flex-basis: 6rem;
+            margin-right: 2rem;
+            text-align: right;
+          }
+
+          .skill-logo-container {
+            // flex-basis: 6rem;
+            margin-right: 2rem;
+            // text-align: right;
+            display: none;
+          }
+
+          .skill-rating-bar {
+            height: 0.5rem;
+            background-color: rgba(0.5,0.5,0.5,0.10);
+            border-radius: 0.25rem;
+            flex: 1 1 auto;
+
+            .skill-rating {
+              display: block;
+              height: 0.5rem;
+              background-color: black;
+              border-radius: 0.25rem;
+
+              &.skill-rating--25 {
+                width: 25%;
+              }
+
+              &.skill-rating--50 {
+                width: 50%;
+              }
+
+              &.skill-rating--75 {
+                width: 75%;
+              }
+
+              &.skill-rating--100 {
+                width: 100%;
+              }
+            }
+          }
+
+          .skill-level {
+            margin-left: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@keyframes loaddata {
+  from {
+    width: 0px;
+  }
+
+  to {
+    width: 200px;
+  }
+}

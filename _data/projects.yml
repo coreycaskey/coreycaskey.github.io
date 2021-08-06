@@ -1,0 +1,39 @@
+- project_title: Sudoku
+  project_description: A simple desktop application using JavaFX that allows you to play Sudoku.
+  project_skills:
+    - Java
+    - Maven
+    - CSS
+  project_status: COMPLETED
+  status_class: completed
+  github_link: www.google.com
+
+- project_title: Personal Website
+  project_description: A single-page website using basic HTML, CSS and jQuery.
+  project_skills:
+    - HTML
+    - CSS
+    - Jekyll
+  project_status: COMPLETED
+  status_class: completed
+  github_link: www.google.com
+
+- project_title: Test Name
+  project_description: Some other cool project that I'm working.
+  project_skills:
+    - Skill
+    - Skill
+    - Skill
+  project_status: IN PROGRESS
+  status_class: in-progress
+  github_link: www.google.com
+
+# - project_title: Test Name
+#   project_description: Some other cool project that I'm working.
+#   project_skills:
+#     - Skill
+#     - Skill
+#     - Skill
+#   project_status: IN PROGRESS
+#   status_class: in-progress
+#   github_link: www.google.com

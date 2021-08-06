@@ -1,0 +1,186 @@
+.contact-section {
+  margin: 0 0 6em;
+  padding: 0 2rem;
+
+  .header {
+    font-family: "Reenie Beanie";
+    font-size: 5rem;
+    font-weight: 400;
+    color: black;
+    text-align: center;
+    margin: 0 0 2rem;
+  }
+
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0 auto;
+    min-width: 14.75rem;
+    max-width: 38rem;
+
+    .description-container {
+      display: flex;
+      flex-direction: column;
+
+      .description {
+        margin: 0.5rem 0;
+
+        font-family: "Inconsolata";
+        font-size: 1rem;
+        font-weight: 400;
+        color: black;
+        letter-spacing: 1px;
+        line-height: 1.4rem;
+
+        &:nth-child(2) {
+          margin-left: 2rem;
+        }
+      }
+    }
+
+    .form-container {
+      margin: 2rem auto 0;
+      width: 100%;
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+
+        .name-container {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .form-input {
+          background-color: lightgray;
+          border: 0.125rem solid black;
+          border-radius: 0.25rem;
+          outline: none;
+
+          margin-bottom: 1rem;
+          padding: 0.75rem;
+
+          font-family: "Inconsolata";
+          font-size: 1rem;
+          font-weight: 400;
+          color: black;
+          letter-spacing: 1px;
+          line-height: 1.4rem;
+
+          transition: border 0.5s;
+
+          &:focus {
+            border-color: gray;
+          }
+
+          // &:valid {
+          //   background-color: lightgray;
+          // }
+
+          // &:-internal-autofill-selected {
+          //   background-color: lightgray !important;
+          //   color: lightgray !important;
+          // }
+        }
+
+        .email-body {
+          background-color: lightgray;
+          border: 0.125rem solid black;
+          border-radius: 0.25rem;
+          outline: none;
+          resize: none;
+          overflow-y: scroll;
+
+          margin-bottom: 1rem;
+          padding: 0.75rem;
+
+          font-family: "Inconsolata";
+          font-size: 1rem;
+          font-weight: 400;
+          color: black;
+          letter-spacing: 1px;
+          line-height: 1.4rem;
+
+          transition: border 0.5s;
+
+          &:focus {
+            border-color: gray;
+          }
+
+          // &:valid {
+          //   background-color: lightgray;
+          // }
+        }
+
+        .form-button {
+          background-color: lightgray;
+          border: 0.125rem solid black;
+          border-radius: 0.25rem;
+          cursor: pointer;
+
+          margin: 0 auto;
+          padding: 0.75rem 1rem;
+
+          font-family: "Inconsolata";
+          font-weight: 400;
+          font-size: 1rem;
+          color: black;
+          letter-spacing: 1px;
+          line-height: 1.4rem;
+
+          transition: color 0.5s, border 0.5s;
+
+          &:hover {
+            color: gray;
+            border: 2px solid gray;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 36rem) {
+  .contact-section {
+    padding: 0 3rem;
+
+    .header {
+      font-size: 6rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-container {
+      .form-container {
+        .contact-form {
+          .name-container {
+            flex-direction: row;
+            // justify-content: space-between;
+
+            .form-input {
+              flex-basis: 50%;
+
+              &:first-child {
+                margin-right: 1rem;
+              }
+
+              // &:-internal-autofill-selected {
+              //   background-color: lightgray !important;
+              //   color: lightgray !important;
+              // }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .contact-section {
+    .header {
+      font-size: 7rem;
+    }
+  }
+}

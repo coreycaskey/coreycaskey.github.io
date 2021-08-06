@@ -1,0 +1,23 @@
+$navbar-height: 5.75rem;
+$navbar-height-mobile: 4.5rem;
+
+$small-spacing: 2rem;
+$regular-spacing: 4rem;
+$large-spacing: 6rem;
+$extra-large-spacing: 8rem;
+
+
+$intro-section-height--mobile: calc(100vh - #{$navbar-height} - #{$small-spacing});
+$intro-section-height--desktop: calc(100vh - #{$navbar-height} - #{$large-spacing});
+
+
+
+$regular-text: black;
+
+
+$header-font: "Reenie Beanie";
+$text-font: "Inconsolata";
+
+$regular-font-size: 1rem;
+
+$regular-font-weight: 400;
