@@ -1,32 +1,36 @@
 <section id="projects-section" class="projects-section">
-  <h1 class="header">Projects</h1>
-  <div class="projects-container">
-    {% for item in site.data.projects %}
-    <div class="project-card-container">
-      <div class="project-container">
-        <p class="title">{{ item.project_title }}</p>
-        <p class="description">{{ item.project_description }}</p>
-        <div class="skills-container">
-          {% for subitem in item.project_skills %}
-          <p>{{ subitem }}</p>
-          {% endfor %}
+  <div class="wrapper-container">
+    <div class="projects-container">
+      <h1 class="header">Projects</h1>
+      <div class="content-container">
+        {% for item in site.data.projects %}
+        <div class="project-card-container">
+          <div class="project-container">
+            <p class="title">{{ item.project_title }}</p>
+            <p class="description">{{ item.project_description }}</p>
+            <div class="skills-container">
+              {% for subitem in item.project_skills %}
+              <p>{{ subitem }}</p>
+              {% endfor %}
+            </div>
+            <hr />
+            <div class="details-container">
+              <p class="tracking {{ item.status_class }}">
+                {{ item.project_status }}
+              </p>
+              <div class="spacer"></div>
+              <a
+                class="external-link"
+                href="{{ item.github_link }}"
+                target="_blank"
+              >
+                {% include _github.html %}
+              </a>
+            </div>
+          </div>
         </div>
-        <hr />
-        <div class="details-container">
-          <p class="tracking {{ item.status_class }}">
-            {{ item.project_status }}
-          </p>
-          <div class="spacer"></div>
-          <a
-            class="external-link"
-            href="{{ item.github_link }}"
-            target="_blank"
-          >
-            {% include _github.html %}
-          </a>
-        </div>
+        {% endfor %}
       </div>
     </div>
-    {% endfor %}
   </div>
 </section>

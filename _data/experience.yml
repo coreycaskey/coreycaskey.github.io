@@ -1,0 +1,50 @@
+- company: Capital One
+  title: Software Engineer — Full Stack Development
+  date: Present
+  responsibilities:
+    - Updated AWS inventory collection processes to capture and expose cloud compliance data
+    - Deployed a compliance feed channel to publish data to an internal stream platform
+    - Configured a new API endpoint that improved data aggregation and retrievability to our UI
+    - Addressed bugs and performed maintenance on our enterprise cloud compliance application
+  skills:
+    - Node
+    - React
+    - PostgreSQL
+
+- company: Capital One
+  title: Software Engineer — Front-end Development
+  date: 2019 — 2021
+  responsibilities:
+    - Helped migrate Small Business Card site pages to Angular and Hippo Bloomreach CMS
+    - Collaborated with UI/UX and business teams to scope designs into reusable components
+    - Paired with developers to build new Angular components for expanding site capabilities
+    - Performed other duties, like implementing tracking pixels and creating Adobe Target tests
+  skills:
+    - Angular
+    - HTML
+    - CSS
+
+- company: Verizon Connect
+  title: Intern — Product Development
+  date: 2018
+  responsibilities:
+    - Developed a form application to manage and display statuses of critical product handler services
+    - Built a console application for programmatically updating vehicle data in the Oracle database
+    - Refactored static HTML templates for monthly customer marketing emails
+  skills:
+    - C#
+    - .NET
+    - Oracle
+
+- company: John Deere
+  title: Intern — Software Development
+  date: 2017
+  responsibilities:
+    - Awesome
+    - Introduced a Node.js POC for defining schemas and producer-consumer methodologies to ingest data streams into our internal streaming platform
+    - Enhanced cloud processes by revising CloudFormation stack deployment templates and creating AWS CLI bash scripts to forward CloudWatch logs to Splunk
+    - Addressed various functionality defects within our enterprise React application—to improve the retrievability and accuracy of company cloud compliance data
+  skills:
+    - React
+    - Java
+    - PostgreSQL

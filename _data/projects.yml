@@ -13,27 +13,19 @@
   project_skills:
     - HTML
     - CSS
+    - jQuery
     - Jekyll
   project_status: COMPLETED
   status_class: completed
   github_link: www.google.com
 
-- project_title: Test Name
-  project_description: Some other cool project that I'm working.
+- project_title: Muze
+  project_description: A mood-based music platform.
   project_skills:
-    - Skill
-    - Skill
-    - Skill
+    - MongDB
+    - Express
+    - Angular
+    - Node.js
   project_status: IN PROGRESS
   status_class: in-progress
   github_link: www.google.com
-
-# - project_title: Test Name
-#   project_description: Some other cool project that I'm working.
-#   project_skills:
-#     - Skill
-#     - Skill
-#     - Skill
-#   project_status: IN PROGRESS
-#   status_class: in-progress
-#   github_link: www.google.com

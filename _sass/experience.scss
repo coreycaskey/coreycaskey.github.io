@@ -1,84 +1,270 @@
 .experience-section {
-  margin: 0 auto;
-  padding: 4rem 0;
-  width: 100%;
-  max-width: 1000px;
+  padding: 0 2rem;
   text-align: center;
 
-  .section-title {
-    font-family: "Reenie Beanie";
-    font-size: 4rem;
-    font-weight: 400;
-    margin: 4rem 0;
-  }
-
-  .experience-container {
+  .wrapper-container {
     display: flex;
-    flex-direction: row; // change to column for mobile
-    justify-content: center;
+    margin: 0 auto;
+    // max-width: 1000px;
 
-    .experience {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex-basis: 20%;
-      cursor: pointer;
+    .experience-container {
+      width: 100%;
+      margin: 4rem 0;
+      // display: flex;
 
-      .folder-icon {
-        height: 100px;
-        width: 100px;
-
-        &.opened {
-          content: url("../img/folder-opened-outlined.png");
-        }
+      .section-title {
+        font-family: "Reenie Beanie";
+        font-size: 4rem;
+        font-weight: 400;
+        // margin: 4rem 0;
+        color: black;
+        text-align: center;
+        margin: 0 0 2rem;
       }
 
-      &:hover {
-        .folder-icon {
-          content: url("../img/folder-closed-filled.png");
+      .subtitle {
+        font-family: "Inconsolata";
+        font-size: 1rem;
+        font-weight: 400;
+        // margin: 4rem 0;
+        color: black;
+        text-align: center;
+        margin: 0 0 1rem;
+      }
 
-          &.opened {
-            content: url("../img/folder-opened-filled.png");
+      .content-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        // position: relative;
+
+        .experience {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-basis: 100%;
+          margin: 1rem 0;
+
+          .folder-icon {
+            height: 100px;
+            width: 100px;
+            cursor: pointer;
+
+            &:hover {
+              content: url("../img/folder-closed-filled.png");
+
+              // &.opened {
+              //   content: url("../img/folder-opened-filled.png");
+              // }
+            }
+
+            &.opened {
+              content: url("../img/folder-opened-outlined.png");
+            }
+          }
+
+          .folder-name {
+            font-family: "Inconsolata";
+            font-size: 1rem;
+            font-weight: 400;
+          }
+
+          .folder-date {
+            font-family: "Inconsolata";
+            font-size: 1rem;
+            font-weight: 400;
+            margin: 0;
           }
         }
       }
 
-      .folder-name {
-        font-family: "Inconsolata";
-        font-size: 1rem;
-        font-weight: 400;
+      .modal-container {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 9999; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        align-items: center;
+
+        .modal-content {
+          margin: 0 auto;
+          width: 80%;
+          max-width: 800px;
+          // background-color: lightgray;
+
+          .experience-description {
+            // margin: 4rem 0 0;
+            font-family: "Inconsolata";
+            font-size: 14px;
+            font-weight: 400;
+            border: 2px solid black;
+            padding: 2rem;
+            border-radius: 4px;
+            // max-height: 400px;
+            background-color: lightgray;
+            box-sizing: border-box;
+            position: relative;
+            overflow: auto;
+            display: block;
+            // overflow: hidden;
+            // transition: margin 0.5s, overflow 0.5s;
+
+            .bar {
+              position: absolute;
+              border-bottom: 2px solid black;
+              border-top-left-radius: 2px;
+              border-top-right-radius: 2px;
+              height: 2rem;
+              width: 100%;
+              top: 0;
+              left: 0;
+              margin-bottom: 2rem;
+
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              box-sizing: border-box;
+              padding: 0 0.5rem;
+
+              img:hover {
+                content: url("../img/close-icon-filled.png");
+                cursor: pointer;
+              }
+
+              span {
+                display: flex;
+                align-items: center;
+              }
+            }
+
+            .modal-content-container {
+              max-height: 400px;
+
+              h3 {
+                margin: 2rem auto 1rem;
+              }
+
+              .responsibilities-container {
+                display: flex;
+                margin: 1rem 0;
+
+                ul {
+                  padding-left: 1rem;
+                  text-align: left;
+                  margin: 1rem 0;
+                }
+
+                li:not(:last-child) {
+                  margin-bottom: 1rem;
+                }
+              }
+
+              .skills-container {
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                margin-top: 2rem;
+
+                p {
+                  font-family: "Inconsolata";
+                  font-size: 0.75rem;
+                  font-weight: 200;
+                  margin: 0;
+                  margin-right: 0.5rem;
+                  color: black;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  border-radius: 4px;
+                }
+              }
+
+              hr {
+                width: 100%;
+                margin: 0;
+                border: none;
+                background-color: black;
+                height: 2px;
+              }
+            }
+
+
+
+            &.hide {
+              // max-height: 0;
+              // overflow: hidden;
+              // padding: 0;
+              // border: none;
+              // margin: 0;
+              // transition: 0s;
+              display: none;
+            }
+
+            // .hide--animate {
+            //   max-height: 0;
+            //   overflow: hidden;
+            //   padding: 0;
+            //   border: none;
+            //   margin: 0;
+            //   // transition: 0.5s;
+            // }
+          }
+        }
+
+
       }
     }
   }
+}
 
-  .experience-description {
-    margin: 4rem 0 0;
-    font-family: "Inconsolata";
-    font-size: 1rem;
-    font-weight: 400;
-    border: 2px solid black;
-    padding: 2rem;
-    border-radius: 4px;
-    max-height: auto;
-    overflow: hidden;
-    transition: margin 0.5s, overflow 0.5s;
+@media screen and (min-width: 400px) {
+  .experience-section {
+    .wrapper-container {
+      max-width: 576px;
 
-    &.hide {
-      max-height: 0;
-      overflow: hidden;
-      padding: 0;
-      border: none;
-      margin: 0;
-      transition: 0s;
+      .experience-container {
+        .content-container {
+          .experience {
+            flex-basis: 50%;
+          }
+        }
+      }
     }
+  }
+}
 
-    .hide--animate {
-      max-height: 0;
-      overflow: hidden;
-      padding: 0;
-      border: none;
-      margin: 0;
-      // transition: 0.5s;
+@media screen and (min-width: 768px) {
+  .experience-section {
+    .wrapper-container {
+      max-width: 800px;
+
+      .experience-container {
+        .content-container {
+          .experience {
+            flex-basis: 25%;
+          }
+        }
+
+        .modal-container {
+          .modal-content {
+            .experience-description {
+              font-size: 1rem;
+
+              .skills-container {
+                p {
+                  font-family: "Inconsolata";
+                  font-size: 1rem;
+                  font-weight: 300;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

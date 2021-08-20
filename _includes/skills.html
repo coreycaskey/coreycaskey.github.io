@@ -1,27 +1,32 @@
 <section id="skills-section" class="skills-section">
-  <h1 class="header">Skills</h1>
-  <div class="skills-container">
-    <div class="scale-container">
-      <p>Novice</p>
-      <div class="spacer"></div>
-      <p>Very<br/>Comfortable</p>
+  <div class="wrapper-container">
+    <div class="skills-container">
+      <h1 class="header">Skills</h1>
+      <div class="content-container">
+        <div class="scale-container">
+          <p>Novice</p>
+          <div class="spacer"></div>
+          <p>Very<br/>Comfortable</p>
+        </div>
+        <ul class="skills-list">
+          {% for item in site.data.skills %}
+            <li class="skill-item">
+              <span class="skill-name">{{ item.skill }}</span>
+              <div class="skill-logo-container">
+                <img class="skill-logo" src="{{ item.icon }}" alt="test" height="24px" width="24px" />
+                <span class="tooltip-text">{{ item.skill }}</span>
+              </div>
+              <div class="skill-rating-bar">
+                <span
+                  id="skill-rating--{{ item.skill | downcase }}"
+                  class="skill-rating"
+                ></span>
+              </div>
+              <p class="skill-level">{{ item.rating_name }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
-    <ul class="skills-list">
-      {% for item in site.data.skills %}
-      <li class="skill-item">
-        <span class="skill-name">{{ item.skill }}</span>
-        <div class="skill-logo-container">
-          <img class="skill-logo" src="{{ item.icon }}" alt="test" height="24px" width="24px" />
-          <span class="tooltip-text">{{ item.skill }}</span>
-        </div>
-        <div class="skill-rating-bar">
-          <span
-            class="skill-rating skill-rating--{{ item.rating_value }}"
-          ></span>
-        </div>
-        <p class="skill-level">{{ item.rating_name }}</p>
-      </li>
-      {% endfor %}
-    </ul>
   </div>
 </section>

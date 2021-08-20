@@ -43,13 +43,18 @@
 
   .interests-container {
     display: flex;
-    flex-direction: row;
+    // flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
+    justify-content: center;
+    position: relative;
 
     .interest {
       flex-basis: 10%;
       text-align: center;
+      height: 500px;
+      width: 100px;
+      position: relative;
 
       .interest-name {
         font-family: "Inconsolata";

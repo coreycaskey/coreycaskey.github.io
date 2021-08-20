@@ -1,38 +1,71 @@
+const scrollReveal = ScrollReveal({
+  reset: false,
+  duration: 500,
+  easing: "ease-out",
+  distance: "20px",
+  viewFactor: 0.2,
+});
+
+function addOverlayReveals() {
+  scrollReveal.reveal("#overlay-section .name", {
+    afterReveal: () => {
+      scrollReveal.reveal("#overlay-section .job-description", {
+        delay: 750,
+        origin: "right",
+        distance: "10px",
+        afterReveal: () => {
+          scrollReveal.reveal("#overlay-section .scroll-container", {
+            delay: 1750,
+            origin: "top",
+            distance: "10px",
+            afterReveal: () => {
+              $("#overlay-section .scroll-button").css("cursor", "pointer");
+            },
+          });
+        },
+      });
+    },
+  });
+}
+
 $(function () {
+  $("#overlay-section").addClass("hide");
+  // $("body").css("overflow", "hidden"); // temp prevent scroll
+
   // $("body").css('overflow', 'hidden');
+  // addOverlayReveals();
 
-  // overlay scroll reveal
+  //
+  revealNavbarLinks();
+  addNavbarClickEvents();
 
-  const scrollReveal = ScrollReveal({
-    reset: false,
-    duration: 500,
-    easing: 'ease-in',
-    distance: "20px",
-    viewFactor: 0.2
+  scrollReveal.reveal("#skills-section", {
+    origin: "bottom",
+    viewFactor: 0.4,
+    afterReveal: () => {
+      setTimeout(() => {
+        $("#skills-section #skill-rating--angular").addClass(
+          "skill-rating--100"
+        );
+        $("#skills-section #skill-rating--react").addClass("skill-rating--25");
+        $("#skills-section #skill-rating--html").addClass("skill-rating--100");
+        $("#skills-section #skill-rating--css").addClass("skill-rating--75");
+        $("#skills-section #skill-rating--javascript").addClass(
+          "skill-rating--75"
+        );
+        $("#skills-section #skill-rating--typescript").addClass(
+          "skill-rating--75"
+        );
+        $("#skills-section #skill-rating--python").addClass(
+          "skill-rating--100"
+        );
+        $("#skills-section #skill-rating--java").addClass("skill-rating--75");
+        $("#skills-section #skill-rating--sql").addClass("skill-rating--50");
+      }, 250);
+    },
+
+    // skill-rating--{{ item.rating_value }}
   });
-
-  scrollReveal.destroy();
-
-  scrollReveal.reveal("#overlay-section .name");
-
-  scrollReveal.reveal("#overlay-section .job-description", {
-    delay: 750,
-    origin: "right",
-    distance: "10px",
-  });
-
-  scrollReveal.reveal("#overlay-section .scroll-container", {
-    delay: 1750,
-    origin: "top",
-    distance: "10px",
-  });
-
-  setTimeout(() => {
-    $("#overlay-section .scroll-button").css("cursor", "pointer");
-  }, 1750);
-
-  loadNavbarLinks(scrollReveal);
-
 
   $("#scroll-button").on("click", function (e) {
     e.preventDefault();
@@ -42,10 +75,10 @@ $(function () {
     loadNavbarLinks(scrollReveal);
   });
 
-  $("#contact-section .contact-form").submit(function(e) {
+  $("#contact-section .contact-form").submit(function (e) {
     e.preventDefault();
 
-    const toEmail = $(".contact-form").attr('action');
+    const toEmail = $(".contact-form").attr("action");
     const firstName = $("#first-name-input").val();
     const lastName = $("#last-name-input").val();
     const fromEmail = $("#email-input").val();
@@ -53,7 +86,8 @@ $(function () {
 
     let emailBody = $("#email-body-input").val();
 
-    emailBody += "%0D%0A%0D%0A--------------------------------------------------%0D%0A";
+    emailBody +=
+      "%0D%0A%0D%0A--------------------------------------------------%0D%0A";
     emailBody += "%0D%0AFirst Name: " + firstName;
     emailBody += "%0D%0ALast Name: " + lastName;
     emailBody += "%0D%0AFrom: " + fromEmail;
@@ -70,11 +104,11 @@ $(function () {
   // scroll reveals
 
   scrollReveal.reveal("#contact-section .header", {
-    origin: "top"
+    origin: "top",
   });
 
   scrollReveal.reveal("#contact-section .description-container", {
-    origin: "right"
+    origin: "right",
   });
 
   scrollReveal.reveal("#contact-section .contact-form", {
@@ -82,14 +116,13 @@ $(function () {
   });
 
   scrollReveal.reveal("#projects-section .header", {
-    origin: "top"
+    origin: "top",
   });
-
 
   $("#projects-section .project-container").each((_, item) => {
     scrollReveal.reveal(".project-container", {
       origin: "left",
-      distance: "10px"
+      distance: "10px",
     });
   });
 
@@ -145,233 +178,234 @@ $(function () {
   // add navbar links
   // eventually loop over and add scroll to dynamically
 
-  $("#navbar-link--about").on("click", function (e) {
-    console.log("about");
-  });
-
-  $("#navbar-link--skills").on("click", function (e) {
-    console.log("skills");
-  });
-
-  $("#navbar-link--experience").on("click", function (e) {
-    console.log("experience");
-  });
-
-  $("#navbar-link--projects").on("click", function (e) {
-    console.log("projects");
-  });
-
-  $("#navbar-link--interests").on("click", function (e) {
-    console.log("interests");
-  });
-
-  $("#navbar-link--contact").on("click", function (e) {
-    console.log("contact");
-  });
-
-  $("#dropdown-menu").on("click", function () {
-    $(this).toggleClass("opened");
-    $("#dropdown-menu-container").toggleClass('opened', 500);
-    // console.log("menu");
-  });
-
   // $(window).on("scroll", function () {
   //   console.log($(this).scrollTop());
   //   if ($(this).scrollTop())
   // });
 
   //   burgerMenu.addEventListener('click', function(e) {
-//     e.preventDefault();
+  //     e.preventDefault();
 
-//     console.log('clicked');
-//     burgerMenu.classList.toggle('opened');
-//     test.classList.toggle('show');
-//   });
+  //     console.log('clicked');
+  //     burgerMenu.classList.toggle('opened');
+  //     test.classList.toggle('show');
+  //   });
 
+  $(window).on("scroll", function (e) {
+    if ($("#experience-section .modal-container").css("display") === "flex") {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  });
 
-
-
-
-
-  const experienceOneDescription = $('#experience-one--description');
-  const experienceTwoDescription = $('#experience-two--description');
-  const experienceThreeDescription = $('#experience-three--description');
+  const experienceOneDescription = $("#experience-one--description");
+  const experienceTwoDescription = $("#experience-two--description");
+  const experienceThreeDescription = $("#experience-three--description");
 
   // experienceOneDescription.addClass('hide');
   // experienceTwoDescription.addClass('hide');
   // experienceThreeDescription.addClass('hide');
 
-  const experienceOne = $('#experience-one');
-  const experienceTwo = $('#experience-two');
-  const experienceThree = $('#experience-three');
+  const experienceOne = $("#experience-1 .folder-icon");
+  const experienceTwo = $("#experience-2 .folder-icon");
+  const experienceThree = $("#experience-3 .folder-icon");
+  const experienceFour = $("#experience-4 .folder-icon");
 
-  const experienceOneIcon = $('#experience-one .folder-icon');
-  const experienceTwoIcon = $('#experience-two .folder-icon');
-  const experienceThreeIcon = $('#experience-three .folder-icon');
+  const experienceOneIcon = $("#experience-1 .folder-icon");
+  const experienceTwoIcon = $("#experience-2 .folder-icon");
+  const experienceThreeIcon = $("#experience-3 .folder-icon");
+  const experienceFourIcon = $("#experience-4 .folder-icon");
 
-  experienceOne.on('click', function(e) {
-    e.preventDefault();
+  // $(".close-modal-icon").click(() => {
+  //   $("#experience-section .modal-container").css({ display: "none" });
+  //   $("body").css("overflow", "initial");
+  //   experienceOneIcon.removeClass("opened");
+  //   experienceTwoIcon.removeClass("opened");
+  //   experienceThreeIcon.removeClass("opened");
+  //   experienceFourIcon.removeClass("opened");
 
-    if (experienceOneDescription.hasClass('hide')) {
+  //   $(".modal-container .experience-description").each((_, item) => {
+  //     $(item).addClass("hide");
+  //   });
+  // });
 
-      // experienceOneDescription.style.maxHeight = experienceOneDescription.scrollHeight + 'px';
-      experienceOneDescription.css("maxHeight", "auto");
+  $("#experience-section .modal-container").on("click", (e) => {
+    const modalContent = $("#experience-section .experience-description:not(.hide)");
+    const modalContentTop = modalContent.offset().top;
+    const modalContentBottom = modalContentTop + modalContent.outerHeight();
+    const modalContentLeft = modalContent.offset().left;
+    const modalContentRight = modalContentLeft + modalContent.outerWidth();
 
+    const closeButton = $("#experience-section .experience-description:not(.hide) .close-modal-icon");
+    const closeButtonTop = closeButton.offset().top;
+    const closeButtonBottom = closeButtonTop + closeButton.outerHeight();
+    const closeButtonLeft = closeButton.offset().left;
+    const closeButtonRight = closeButtonLeft + closeButton.outerWidth();
 
-      experienceTwoDescription.addClass('hide');
-      experienceThreeDescription.addClass('hide');
+    const didClickOuterModal =
+      e.pageX < modalContentLeft ||
+      e.pageX > modalContentRight ||
+      e.pageY < modalContentTop ||
+      e.pageY > modalContentBottom;
 
-      experienceTwoDescription.css("maxHeight", null);
-      experienceThreeDescription.css("maxHeight", null);
+    const didClickCloseButton =
+      e.pageX > closeButtonLeft &&
+      e.pageX < closeButtonRight &&
+      e.pageY > closeButtonTop &&
+      e.pageY < closeButtonBottom;
 
-      experienceOneIcon.addClass('opened');
-      experienceTwoIcon.removeClass('opened');
-      experienceThreeIcon.removeClass('opened');
-
-      experienceOneDescription.removeClass('hide');
-    }
-    else {
-      experienceOneDescription.addClass('hide');
-      experienceOneIcon.removeClass('opened');
-
-      experienceOneDescription.css("maxHeight", null);
-    }
-  });
-
-  experienceTwo.on('click', function(e) {
-    e.preventDefault();
-
-    if (experienceTwoDescription.hasClass('hide')) {
-
-      // experienceOneDescription.style.maxHeight = experienceOneDescription.scrollHeight + 'px';
-      // experienceOneDescription.style.maxHeight = "auto";
-
-
-      experienceOneDescription.addClass('hide');
-      experienceThreeDescription.addClass('hide');
-
-      experienceOneDescription.css("maxHeight", null);
-      experienceThreeDescription.css("maxHeight", null);
-
-      experienceOneIcon.removeClass('opened');
-      experienceTwoIcon.addClass('opened');
-      experienceThreeIcon.removeClass('opened');
-
-      experienceTwoDescription.removeClass('hide');
-    }
-    else {
-      experienceTwoDescription.addClass('hide');
-      experienceTwoIcon.removeClass('opened');
-
-      experienceTwoDescription.css("maxHeight", null);
+    if (didClickOuterModal || didClickCloseButton) {
+      closeModal(experienceOneIcon, experienceTwoIcon, experienceThreeIcon, experienceFourIcon);
     }
   });
 
-  experienceThree.on('click', function(e) {
+  experienceOne.on("click", function (e) {
     e.preventDefault();
 
-    if (experienceThreeDescription.hasClass('hide')) {
-
-      // experienceOneDescription.style.maxHeight = experienceOneDescription.scrollHeight + 'px';
-      // experienceOneDescription.style.maxHeight = "auto";
-
-
-      experienceOneDescription.addClass('hide');
-      experienceTwoDescription.addClass('hide');
-
-      experienceOneDescription.css("maxHeight", null);
-      experienceTwoDescription.css("maxHeight", null);
-
-      experienceOneIcon.removeClass('opened');
-      experienceTwoIcon.removeClass('opened');
-      experienceThreeIcon.addClass('opened');
-
-      experienceThreeDescription.removeClass('hide');
+    // this may not be needed ...
+    if (experienceOneIcon.hasClass("opened")) {
+      $("body").css("overflow", "initial");
+    } else {
+      experienceOneIcon.addClass("opened");
+      $("#experience-section .modal-container").css({ display: "flex" });
+      $("#experience-1--description").removeClass("hide")
+      $("body").css("overflow", "hidden");
     }
-    else {
-      experienceThreeDescription.addClass('hide');
-      experienceThreeIcon.removeClass('opened');
+  });
 
-      experienceThreeDescription.css("maxHeight", null);
+  experienceTwo.on("click", function (e) {
+    e.preventDefault();
+
+    // this may not be needed ...
+    if (experienceTwoIcon.hasClass("opened")) {
+      $("body").css("overflow", "initial");
+    } else {
+      experienceTwoIcon.addClass("opened");
+      $("#experience-section .modal-container").css({ display: "flex" });
+      $("#experience-2--description").removeClass("hide")
+      $("body").css("overflow", "hidden");
+    }
+  });
+
+  experienceThree.on("click", function (e) {
+    e.preventDefault();
+
+    // this may not be needed ...
+    if (experienceThreeIcon.hasClass("opened")) {
+      $("body").css("overflow", "initial");
+    } else {
+      experienceThreeIcon.addClass("opened");
+      $("#experience-section .modal-container").css({ display: "flex" });
+      $("#experience-3--description").removeClass("hide")
+      $("body").css("overflow", "hidden");
+    }
+  });
+
+  experienceFour.on("click", function (e) {
+    e.preventDefault();
+
+    // this may not be needed ...
+    if (experienceFourIcon.hasClass("opened")) {
+      $("body").css("overflow", "initial");
+    } else {
+      experienceFourIcon.addClass("opened");
+      $("#experience-section .modal-container").css({ display: "flex" });
+      $("#experience-4--description").removeClass("hide")
+      $("body").css("overflow", "hidden");
     }
   });
 });
 
+function revealNavbarLinks() {
+  scrollReveal.reveal("#sticky-nav", { origin: "top", cleanup: true });
 
-function loadNavbarLinks(scrollReveal) {
-  $("#overlay-section").addClass("hide");
-  $("body").css("overflow", "initial");
+  let delay = 500;
 
-  let delay = 1250;
+  if ($(window).width() >= 768) {
+    // for tablet or desktop, cascade reveal navbar links
+    $(".navbar-link-container").each((_, item) => {
+      scrollReveal.reveal(item, {
+        origin: "top",
+        delay: delay,
+        cleanup: true
+      });
 
-  // scrollReveal.reveal("#site-navigation a", {
-  //   origin: "top",
-  //   delay: delay
-  // });
+      delay += 100;
+    });
+  } else {
+    // for mobile, cascade hamburger menu bars
+    $(".dropdown-menu-bar-container").each((_, item) => {
+      scrollReveal.reveal(item, {
+        origin: "right",
+        delay: delay,
+        cleanup: true
+      });
 
+      delay += 100;
+    });
+  }
 
+  delay += 500;
+
+  // reveal intro after navbar has been revealed
   scrollReveal.reveal("#intro-section", {
-    origin: "top",
-    delay: delay
+    origin: "left",
+    delay: delay,
+    afterReveal: (el) => {
+      setTimeout(() => {
+        $(".description-container span").addClass("shown");
+        $(".img-mask").addClass("draw");
+        $("body").css("overflow", "initial"); // allow scrolling again
+      }, 250);
+    },
   });
 
-  delay += 500
+  // window resize listener for when dropdown is opened and change size ...
 
-  // $("#navigation-section .internal-links-container a").each((_, item) => {
-  //   const elementName = "#navigation-section #" + $(item).attr('id');
-  //   scrollReveal.reveal(elementName, {
-  //     origin: "top",
-  //     delay: delay,
-  //     duration: 500
-  //   });
-
-  //   delay += 100;
-  // });
-
-  // scrollReveal.reveal("#navigation-section .external-links-container a", {
-  //   origin: "top",
-  //   delay: delay
+  // $(window).resize(() => {
+  //   if ($(window).width() >= 768) {
+  //     console.log("greater");
+  //     $("#sticky-nav .links-container")
+  //       .removeClass("links-container--mobile")
+  //       .addClass("links-container--non-mobile");
+  //   } else {
+  //     console.log("less");
+  //     $("#sticky-nav .links-container")
+  //       .removeClass("links-container--non-mobile")
+  //       .addClass("links-container--mobile");
+  //   }
   // });
 }
 
+function addNavbarClickEvents() {
+  // tablet and desktop navbar links
+  $(".navbar-link:not(.navbar-btn)").each((_, item) => {
+    const scrollSection = $(item).attr("id").split("--")[1];
+    const sectionPos = $(`#${scrollSection}-section`).offset().top;
+    const offsetHeight = sectionPos - $("#sticky-nav").outerHeight();
 
+    $(item).click(() => {
+      $("html, body").animate({ scrollTop: offsetHeight }, 500);
+    });
+  });
 
-// $(document).ready(function() {
-//   document.reset();
-//   const collapseBtn = document.getElementById('collapse-link');
-//   const overlay = document.getElementById('site-overlay--collapsible');
-//   const body = document.getElementsByTagName('body');
+  // mobile hamburger menu
+  $("#dropdown-menu").click((e) => {
+    $("#dropdown-menu").toggleClass("opened");
+    $("#links-container").toggleClass("opened");
+  });
+}
 
-//   const burgerMenu = document.getElementById('hamburger-menu');
-//   const test = document.getElementById('dropdown');
+function closeModal(experienceOneIcon, experienceTwoIcon, experienceThreeIcon, experienceFourIcon) {
+  $("#experience-section .modal-container").css({ display: "none" });
+  $("body").css("overflow", "initial");
+  experienceOneIcon.removeClass("opened");
+  experienceTwoIcon.removeClass("opened");
+  experienceThreeIcon.removeClass("opened");
+  experienceFourIcon.removeClass("opened");
 
-//   overlay.classList.remove('hide');
-
-//   // if (overlay.classList.contains('hide')) {
-//   //   document.body.style.height = 'initial';
-//   //   document.body.style.overflow = 'initial';
-//   // }
-//   // else {
-//   //   document.body.style.height = '100%';
-//   //   document.body.style.overflow = 'hidden';
-//   // }
-
-// collapseBtn.addEventListener('click', function(e) {
-//   e.preventDefault();
-
-//   overlay.classList.add('hide');
-//   // document.body.style.height = 'initial';
-//   // document.body.style.overflow = 'initial';
-// });
-
-//   burgerMenu.addEventListener('click', function(e) {
-//     e.preventDefault();
-
-//     console.log('clicked');
-//     burgerMenu.classList.toggle('opened');
-//     test.classList.toggle('show');
-//   });
-
-//   // if opened dropdown and change screen size, close it
-// })
-
+  $(".modal-container .experience-description").each((_, item) => {
+    $(item).addClass("hide");
+  });
+}
