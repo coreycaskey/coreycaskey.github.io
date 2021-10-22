@@ -1,0 +1,14 @@
+- name: About Me
+  class: intro
+
+- name: Skills
+  class: skills
+
+- name: Experience
+  class: experience
+
+- name: Projects
+  class: projects
+
+- name: Contact
+  class: contact

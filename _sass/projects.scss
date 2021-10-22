@@ -1,187 +1,128 @@
-.projects-section {
-  padding: 0 2rem;
+.projects-outer-container {
+  @extend %outer-container;
 
-  .wrapper-container {
-    display: flex;
-    margin: 0 auto;
-    min-width: 14.75rem;
-    max-width: 75rem;
-
-    .projects-container {
-      width: 100%;
-      margin: 4rem 0;
-
-      .header {
-        font-family: "Reenie Beanie";
-        font-size: 4rem;
-        font-weight: 400;
-        color: black;
-        text-align: center;
-        margin: 0 0 2rem;
-      }
-
-      .content-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-
-        .project-card-container {
-          display: flex;
-          padding: 0.5rem;
-          box-sizing: border-box;
-          // flex: 0 1 calc(100% - 1rem);
-          flex-basis: 100%;
-          min-width: 310px;
-
-          .project-container {
-            display: flex;
-            flex-direction: column;
-            padding: 1.5rem;
-            border-radius: 4px;
-            border: 2px solid black;
-            width: 100%;
-
-            .title {
-              font-family: "Inconsolata";
-              font-size: 2rem;
-              font-weight: 600;
-              margin-top: 0;
-              margin-bottom: 0.5rem;
-              color: black;
-            }
-
-            .description {
-              font-family: "Inconsolata";
-              font-size: 1rem;
-              font-weight: 200;
-              margin: 0;
-              margin-bottom: 1rem;
-              color: black;
-            }
-
-            .skills-container {
-              display: flex;
-              align-items: center;
-              justify-content: start;
-
-              p {
-                font-family: "Inconsolata";
-                font-size: 0.75rem;
-                font-weight: 200;
-                margin: 0;
-                margin-right: 0.5rem;
-                color: black;
-                border: 1px solid black;
-                padding: 0.5rem;
-                border-radius: 4px;
-
-                &:last-child {
-                  margin-right: 0;
-                }
-              }
-            }
-
-            hr {
-              width: 100%;
-              margin: 1rem 0;
-              border: none;
-              background-color: black;
-              height: 2px;
-            }
-
-            .details-container {
-              display: flex;
-
-              .tracking {
-                font-family: "Inconsolata";
-                font-size: 1rem;
-                font-weight: 100;
-                text-transform: uppercase;
-                margin: 0;
-
-                &.completed {
-                  color: green;
-                }
-
-                &.in-progress {
-                  color: orange;
-                }
-              }
-
-              .spacer {
-                flex: 1 0;
-              }
-
-              .external-link {
-                svg {
-                  path {
-                    fill: black;
-                  }
-                }
-
-                &:hover {
-                  svg {
-                    path {
-                      fill: gray;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-
-
-
+  max-width: $max-width--desktop;
 }
 
-@media screen and (min-width: 36rem) {
-  .projects-section {
-    .wrapper-container {
-      .projects-container {
+.projects-inner-container {
+  width: 100%;
+  margin: $large-margin--top-bottom;
+}
 
-      }
-    }
+.projects-inner-container__header {
+  @extend %section-header;
+}
+
+.projects-content-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project-card-container {
+  display: flex;
+  padding: $spacing--extra-extra-small;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  min-width: 310px;
+
+  @include tablet {
+    flex-basis: 50%;
+  }
+
+  @include desktop {
+    flex-basis: 33%;
   }
 }
 
-@media screen and (min-width: 768px) {
-  .projects-section {
-    .wrapper-container {
-      .projects-container {
-        .header {
-          font-size: 7rem;
-        }
+.project-container {
+  display: flex;
+  flex-direction: column;
+  padding: $spacing--smaller;
+  border-radius: $border-radius;
+  border: $border--regular-black;
+  width: 100%;
+  font-family: $text-font--body;
+}
 
-        .content-container {
-          .project-card-container {
-            // flex: 0 1 calc(50% - 1rem);
-            flex-basis: 50%;
-          }
-        }
-      }
-    }
+.project-container__header {
+  font-size: $spacing--small;
+  font-weight: $font-weight--semi-bold;
+  margin-top: 0;
+  margin-bottom: $spacing--extra-extra-small;
+}
+
+.project-container__description {
+  font-size: $font-size--regular;
+  font-weight: $font-weight--light;
+  line-height: $line-height--text;
+  margin: 0 0 $spacing--extra-small;
+}
+
+.project-container__spacer {
+  flex: 1 0 auto;
+}
+
+.project-skills-container {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.project-skills-container__item {
+  font-size: $font-size--extra-small;
+  font-weight: $font-weight--light;
+  margin: 0;
+  margin-right: $spacing--extra-extra-small;
+  border: $border--small-black;
+  padding: $spacing--extra-extra-small;
+  border-radius: $border-radius;
+}
+
+hr {
+  width: 100%;
+  margin: $extra-small-margin--top-bottom;
+  border: none;
+  background-color: $bg-color--black;
+  height: 2px;
+}
+
+.project-details-container {
+  display: flex;
+}
+
+.project-details-container__status {
+  font-size: $font-size--regular;
+  font-weight: $font-weight--light;
+  line-height: $line-height--text;
+  text-transform: uppercase;
+  margin: 0;
+
+  &--completed {
+    color: green;
+  }
+
+  &--in-progress {
+    color: orange;
   }
 }
 
-@media screen and (min-width: 62rem) {
-
+.project-details-container__spacer {
+  flex: 1 0;
 }
 
-@media screen and (min-width: 1200px) {
-  .projects-section {
-    .wrapper-container {
-      .projects-container {
-        .content-container {
-          .project-card-container {
-            // flex: 0 1 calc(50% - 1rem);
-            flex-basis: 33%;
-          }
-        }
+.project-details-container__link {
+  svg {
+    path {
+      transition: fill 0.5s;
+      fill: $fill-color--black;
+    }
+  }
+
+  &:hover {
+    svg {
+      path {
+        fill: $fill-color--gray;
       }
     }
   }

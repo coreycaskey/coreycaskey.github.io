@@ -1,28 +1,36 @@
-<section id="skills-section" class="skills-section">
-  <div class="wrapper-container">
-    <div class="skills-container">
-      <h1 class="header">Skills</h1>
-      <div class="content-container">
+<section class="skills-section">
+  <div class="skills-outer-container">
+    <div class="skills-inner-container">
+      <h1 class="skills-inner-container__header">Skills</h1>
+      <div class="skills-content-container">
+        <!-- mobile -->
         <div class="scale-container">
-          <p>Novice</p>
-          <div class="spacer"></div>
-          <p>Very<br/>Comfortable</p>
+          <p class="scale-container__skill-level">Novice</p>
+          <p class="scale-container__skill-level">Very<br />Comfortable</p>
         </div>
-        <ul class="skills-list">
+        <!-- all devices -->
+        <ul class="skills-list-container">
           {% for item in site.data.skills %}
-            <li class="skill-item">
-              <span class="skill-name">{{ item.skill }}</span>
-              <div class="skill-logo-container">
-                <img class="skill-logo" src="{{ item.icon }}" alt="test" height="24px" width="24px" />
-                <span class="tooltip-text">{{ item.skill }}</span>
+            <li class="skills-item-container">
+              <span class="skills-item-container__name">{{ item.skill }}</span>
+              <div class="skills-logo-container">
+                <img
+                  class="skills-logo-container__logo"
+                  src="{{ item.icon | relative_url }}"
+                  alt="{{ item.skill }} Logo"
+                  height="24px"
+                  width="24px"
+                />
+                <span class="skills-logo-container__tooltip">
+                  {{ item.skill }}
+                </span>
               </div>
-              <div class="skill-rating-bar">
+              <div class="skills-bar-container">
                 <span
-                  id="skill-rating--{{ item.skill | downcase }}"
-                  class="skill-rating"
+                  class="skills-bar-container__rating skills-bar-container__rating--{{ item.skill | downcase }}"
                 ></span>
               </div>
-              <p class="skill-level">{{ item.rating_name }}</p>
+              <p class="skills-item-container__skill-level">{{ item.rating }}</p>
             </li>
           {% endfor %}
         </ul>

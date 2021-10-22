@@ -1,175 +1,123 @@
-.contact-section {
-  padding: 0 2rem;
+.contact-outer-container {
+  @extend %outer-container;
 
-  .wrapper-container {
-    display: flex;
-    margin: 0 auto;
-    min-width: 14.75rem;
-    max-width: 38rem;
+  max-width: $max-width--mobile;
+}
 
-    .contact-container {
-      margin: 4rem 0;
+.contact-inner-container {
+  margin: $large-margin--top-bottom;
+}
 
-      .header {
-        font-family: "Reenie Beanie";
-        font-size: 4rem;
-        font-weight: 400;
-        color: black;
-        text-align: center;
-        margin: 0 0 2rem;
-      }
+.contact-inner-container__header {
+  @extend %section-header;
+}
 
-      .content-container {
-        .description-container {
-          display: flex;
-          flex-direction: column;
+.contact-description-container {
+  display: flex;
+  flex-direction: column;
+}
 
-          .description {
-            margin: 0.5rem 0;
+.contact-description-container__description {
+  font-family: $text-font--body;
+  font-size: $font-size--regular;
+  font-weight: $font-weight--regular;
+  line-height: $line-height--text;
 
-            font-family: "Inconsolata";
-            font-size: 1rem;
-            font-weight: 400;
-            color: black;
-            letter-spacing: 1px;
-            line-height: 1.4rem;
+  margin: $extra-extra-small-margin--top-bottom;
 
-            // change font-size to 14 ???
+  &:nth-child(2) {
+    margin-left: $spacing--small;
+  }
+}
 
-            &:nth-child(2) {
-              margin-left: 2rem;
-            }
-          }
-        }
+.contact-form-container {
+  margin-top: $spacing--small;
+}
 
-        .form-container {
-          margin-top: 2rem;
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
 
-          .contact-form {
-            display: flex;
-            flex-direction: column;
+.contact-form__name-inputs {
+  display: flex;
+  flex-direction: column;
 
-            .name-container {
-              display: flex;
-              flex-direction: column;
-            }
+  @include mobile-large {
+    flex-direction: row;
+  }
+}
 
-            .form-input {
-              background-color: lightgray;
-              border: 0.125rem solid black;
-              border-radius: 0.25rem;
-              outline: none;
+.contact-form__input {
+  font-family: $text-font--body;
+  font-size: $font-size--regular;
+  font-weight: $font-weight--regular;
+  line-height: $line-height--text;
 
-              margin-bottom: 1rem;
-              padding: 0.75rem;
+  background-color: $bg-color--lightgray;
+  border: $border--regular-black;
+  border-radius: $border-radius;
+  outline: none;
 
-              font-family: "Inconsolata";
-              font-size: 1rem;
-              font-weight: 400;
-              color: black;
-              letter-spacing: 1px;
-              line-height: 1.4rem;
+  margin-bottom: $spacing--extra-small;
+  padding: 0.75rem;
 
-              transition: border 0.5s;
+  transition: border 0.5s;
 
-              &:focus {
-                border-color: gray;
-              }
-            }
+  &:focus {
+    border-color: $border-color--gray;
+  }
 
-            .email-body {
-              background-color: lightgray;
-              border: 0.125rem solid black;
-              border-radius: 0.25rem;
-              outline: none;
-              resize: none;
-              overflow-y: scroll;
+  @include mobile-large {
+    flex-basis: 50%;
 
-              margin-bottom: 1rem;
-              padding: 0.75rem;
-
-              font-family: "Inconsolata";
-              font-size: 1rem;
-              font-weight: 400;
-              color: black;
-              letter-spacing: 1px;
-              line-height: 1.4rem;
-
-              transition: border 0.5s;
-
-              &:focus {
-                border-color: gray;
-              }
-            }
-
-            .form-button {
-              background-color: lightgray;
-              border: 0.125rem solid black;
-              border-radius: 0.25rem;
-              cursor: pointer;
-
-              margin: 0 auto;
-              padding: 0.75rem 1rem;
-
-              font-family: "Inconsolata";
-              font-weight: 400;
-              font-size: 1rem;
-              color: black;
-              letter-spacing: 1px;
-              line-height: 1.4rem;
-
-              transition: color 0.5s, border 0.5s;
-
-              &:hover {
-                color: gray;
-                border: 2px solid gray;
-              }
-            }
-          }
-        }
-      }
+    &:first-child {
+      margin-right: $spacing--extra-small;
     }
   }
 }
 
-@media screen and (min-width: 36rem) {
-  .contact-section {
-    .wrapper-container {
-      .contact-container {
-        .header {
-          font-size: 5rem;
-        }
+.contact-form__textarea {
+  font-family: $text-font--body;
+  font-size: $font-size--regular;
+  font-weight: $font-weight--regular;
+  line-height: $line-height--text;
 
-        .content-container {
-          .form-container {
-            .contact-form {
-              .name-container {
-                flex-direction: row;
+  background-color: $bg-color--lightgray;
+  border: $border--regular-black;
+  border-radius: $border-radius;
+  outline: none;
+  resize: none;
+  overflow-y: scroll;
 
-                .form-input {
-                  flex-basis: 50%;
+  margin-bottom: $spacing--extra-small;
+  padding: 0.75rem;
 
-                  &:first-child {
-                    margin-right: 1rem;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+  transition: border 0.5s;
+
+  &:focus {
+    border-color: $border-color--gray;
   }
 }
 
-@media screen and (min-width: 48rem) {
-  .contact-section {
-    .wrapper-container {
-      .contact-container {
-        .header {
-          font-size: 6rem;
-        }
-      }
-    }
+.contact-form__btn {
+  font-family: $text-font--body;
+  font-size: $font-size--regular;
+  font-weight: $font-weight--regular;
+  line-height: $line-height--text;
+
+  background-color: $bg-color--lightgray;
+  border: $border--regular-black;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  margin: $margin--center;
+  padding: 0.75rem 1rem;
+
+  transition: color 0.5s, border 0.5s;
+
+  &:hover {
+    color: $text-color--gray;
+    border-color: $border-color--gray;
   }
 }

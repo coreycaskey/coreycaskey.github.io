@@ -1,6 +1,11 @@
+// colors
+
 $bg-color--lightgray: lightgray;
 $bg-color--black: black;
 $bg-color--gray: gray;
+
+$fill-color--black: black;
+$fill-color--gray: gray;
 
 $text-color--black: black;
 $text-color--gray: gray;
@@ -8,60 +13,96 @@ $text-color--gray: gray;
 $border-color--black: black;
 $border-color--gray: gray;
 
-$navbar-height: 5.75rem;
-$navbar-height-mobile: 4.5rem;
+// spacing
 
-$navbar-min-width: 87.5rem;
-
-$min-width: 14.75rem;
-
-$small-spacing: 2rem;
-$regular-spacing: 4rem;
-$large-spacing: 6rem;
-$extra-large-spacing: 8rem;
-
-
-$intro-section-height--mobile: calc(100vh - #{$navbar-height-mobile} - #{$regular-spacing});
-$intro-section-height--tablet: calc(100vh - #{$navbar-height} - #{$regular-spacing});
-
-
-
-$mobile-width--400: 25rem;
-$mobile-width--large: 36rem;
-$tablet-width: 48rem;
+$spacing--extra-extra-small: 0.5rem;
+$spacing--extra-small: 1rem;
+$spacing--smaller: 1.5rem;
+$spacing--small: 2rem;
+$spacing--small-plus-half: 2.5rem;
+$spacing--regular: 4rem;
+$spacing--large: 6rem;
+$spacing--extra-large: 8rem;
 
 $small-padding--left-right: 0 2rem;
+$regular-padding--left-right: 0 4rem;
 
+$extra-extra-small-margin--top-bottom: 0.5rem 0;
+$extra-small-margin--top-bottom: 1rem 0;
 $small-margin--top-bottom: 2rem 0;
+$large-margin--top-bottom: 6rem 0;
 
+$small-margin--bottom: 0 0 2rem;
 
-// $regular-text: black;
+$margin--center: 0 auto;
 
+// font
 
 $text-font--header: "Reenie Beanie";
 $text-font--body: "Inconsolata";
 
-$regular-font-size: 1rem;
+$font-size--extra-small: 0.75rem;
+$font-size--small: 0.875rem;
+$font-size--regular: 1rem;
+$font-size--regular-plus-quarter: 1.25rem;
+$font-size--large: 4rem;
+$font-size--larger: 5rem;
+$font-size--extra-large: 6rem;
+$font-size--extra-extra-large: 8rem;
 
-$regular-font-weight: 400;
+$font-weight--extra-light: 200;
+$font-weight--light: 300;
+$font-weight--regular: 400;
+$font-weight--semi-bold: 500;
+$font-weight--bold: 600;
 
-$min-width: 14.75rem;
+$line-height--text: 1.4rem;
+$line-height--large: 4rem;
+$line-height--extra-large: 8rem;
+
+// widths
+
+$max-width--mobile: 36rem;
+$max-width--in-between: 54rem;
+$max-width--tablet: 64rem;
+$max-width--desktop: 75rem;
+
+$section-min-width: 15rem;
+
+$mobile-width--400: 25rem; // 400px
+$mobile-width--large: 36rem; // 576px
+$tablet-width: 48rem; // 768px
+$tablet-width--breakpoint: 47.9375rem; // 767px
+$desktop-width: 75rem; // 1200px
+
+// borders
+
+$border--regular-transparent: 2px solid transparent;
+$border--regular-black: 2px solid black;
+$border--small-black: 1px solid black;
+
+$border-radius: 4px;
+
+// section specific global variables
+
+$navbar-height: 5.75rem;
+$navbar-height--mobile: 4.5rem;
+$navbar-min-width: $section-min-width;
+$navbar-max-width: 87.5rem;
+$navbar-box-shadow: 0 10px 10px -10px $bg-color--black;
+
+$intro-section-height--mobile: calc(100vh - #{$navbar-height--mobile});
+$intro-section-height--tablet: calc(100vh - #{$navbar-height});
+
+// mixins
 
 @mixin baseText($textTransform: none) {
   font-family: $text-font--body;
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: $font-size--regular;
+  font-weight: $font-weight--regular;
+  line-height: $line-height--text;
   color: $text-color--black;
-  letter-spacing: 1px;
-  line-height: 1.2rem;
   text-transform: $textTransform;
-}
-
-
-@mixin wrapper-container {
-  display: flex;
-  margin: $small-margin--top-bottom;
-  min-width: $min-width;
 }
 
 @mixin mobile-400 {
@@ -76,8 +117,45 @@ $min-width: 14.75rem;
   }
 }
 
+@mixin mobile-only {
+  @media screen and (max-width: $tablet-width--breakpoint) {
+    @content;
+  }
+}
+
 @mixin tablet {
   @media screen and (min-width: $tablet-width) {
     @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+// extensions
+
+%outer-container {
+  display: flex;
+  justify-content: center;
+  margin: $margin--center;
+  min-width: $section-min-width;
+}
+
+%section-header {
+  font-family: $text-font--header;
+  font-size: $font-size--large;
+  font-weight: $font-weight--regular;
+  text-align: center;
+  margin: $small-margin--bottom;
+
+  @include mobile-large {
+    font-size: $font-size--larger;
+  }
+
+  @include tablet {
+    font-size: $font-size--extra-large;
   }
 }

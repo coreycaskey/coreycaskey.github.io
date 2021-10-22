@@ -3,241 +3,172 @@ const scrollReveal = ScrollReveal({
   duration: 500,
   easing: "ease-out",
   distance: "20px",
-  viewFactor: 0.2,
+  viewFactor: 0.5,
 });
 
-function addOverlayReveals() {
-  scrollReveal.reveal("#overlay-section .name", {
-    afterReveal: () => {
-      scrollReveal.reveal("#overlay-section .job-description", {
-        delay: 750,
-        origin: "right",
-        distance: "10px",
-        afterReveal: () => {
-          scrollReveal.reveal("#overlay-section .scroll-container", {
-            delay: 1750,
-            origin: "top",
-            distance: "10px",
-            afterReveal: () => {
-              $("#overlay-section .scroll-button").css("cursor", "pointer");
-            },
-          });
-        },
-      });
-    },
-  });
-}
+let delay = 0;
 
-$(function () {
-  $("#overlay-section").addClass("hide");
-  // $("body").css("overflow", "hidden"); // temp prevent scroll
-
-  // $("body").css('overflow', 'hidden');
-  // addOverlayReveals();
-
-  //
-  revealNavbarLinks();
-  addNavbarClickEvents();
-
-  scrollReveal.reveal("#skills-section", {
-    origin: "bottom",
-    viewFactor: 0.4,
-    afterReveal: () => {
-      setTimeout(() => {
-        $("#skills-section #skill-rating--angular").addClass(
-          "skill-rating--100"
-        );
-        $("#skills-section #skill-rating--react").addClass("skill-rating--25");
-        $("#skills-section #skill-rating--html").addClass("skill-rating--100");
-        $("#skills-section #skill-rating--css").addClass("skill-rating--75");
-        $("#skills-section #skill-rating--javascript").addClass(
-          "skill-rating--75"
-        );
-        $("#skills-section #skill-rating--typescript").addClass(
-          "skill-rating--75"
-        );
-        $("#skills-section #skill-rating--python").addClass(
-          "skill-rating--100"
-        );
-        $("#skills-section #skill-rating--java").addClass("skill-rating--75");
-        $("#skills-section #skill-rating--sql").addClass("skill-rating--50");
-      }, 250);
-    },
-
-    // skill-rating--{{ item.rating_value }}
-  });
-
-  $("#scroll-button").on("click", function (e) {
-    e.preventDefault();
-
-    $("#scroll-button").addClass("clicked");
-
-    loadNavbarLinks(scrollReveal);
-  });
-
-  $("#contact-section .contact-form").submit(function (e) {
-    e.preventDefault();
-
-    const toEmail = $(".contact-form").attr("action");
-    const firstName = $("#first-name-input").val();
-    const lastName = $("#last-name-input").val();
-    const fromEmail = $("#email-input").val();
-    const subject = $("#subject-input").val();
-
-    let emailBody = $("#email-body-input").val();
-
-    emailBody +=
-      "%0D%0A%0D%0A--------------------------------------------------%0D%0A";
-    emailBody += "%0D%0AFirst Name: " + firstName;
-    emailBody += "%0D%0ALast Name: " + lastName;
-    emailBody += "%0D%0AFrom: " + fromEmail;
-
-    $("#first-name-input").val("");
-    $("#last-name-input").val("");
-    $("#email-input").val("");
-    $("#subject-input").val("");
-    $("#email-body-input").val("");
-
-    window.location = toEmail + "?subject=" + subject + "&body=" + emailBody;
-  });
-
-  // scroll reveals
-
-  scrollReveal.reveal("#contact-section .header", {
-    origin: "top",
-  });
-
-  scrollReveal.reveal("#contact-section .description-container", {
-    origin: "right",
-  });
-
-  scrollReveal.reveal("#contact-section .contact-form", {
-    origin: "left",
-  });
-
-  scrollReveal.reveal("#projects-section .header", {
-    origin: "top",
-  });
-
-  $("#projects-section .project-container").each((_, item) => {
-    scrollReveal.reveal(".project-container", {
-      origin: "left",
-      distance: "10px",
-    });
-  });
-
-  // const experienceOneDescription = $('#click-one');
-  // const experienceTwoDescription = $('#click-two');
-  // const experienceThreeDescription = $('#click-three');
-
-  // // console.log(experienceOneDescription);
-
-  // experienceOneDescription.on("click", function (e) {
-  //   e.preventDefault();
-
-  //   // $("#click-two-content").css("display", "none");
-  //   // $("#click-three-content").css("display", "none");
-
-  //   $("#click-two-content").addClass("hide");
-  //   $("#click-three-content").addClass("hide");
-
-  //   if (!$("#click-one-content").hasClass("hide")) {
-  //     console.log("in here");
-  //     $("#click-one-content").addClass("hide");
-  //   } else {
-  //     $("#click-one-content").removeClass("hide");
-  //   }
-  // });
-
-  // experienceTwoDescription.on("click", function (e) {
-  //   e.preventDefault();
-
-  //   $("#click-one-content").css("display", "none");
-  //   $("#click-three-content").css("display", "none");
-
-  //   if ($("#click-two-content").css("display") === "block") {
-  //     $("#click-two-content").css("display", "none");
-  //   } else {
-  //     $("#click-two-content").css("display", "block");
-  //   }
-  // });
-
-  // experienceThreeDescription.on("click", function (e) {
-  //   e.preventDefault();
-
-  //   $("#click-one-content").css("display", "none");
-  //   $("#click-two-content").css("display", "none");
-
-  //   if ($("#click-three-content").css("display") === "block") {
-  //     $("#click-three-content").css("display", "none");
-  //   } else {
-  //     $("#click-three-content").css("display", "block");
-  //   }
-  // });
-
-  // add navbar links
-  // eventually loop over and add scroll to dynamically
-
-  // $(window).on("scroll", function () {
-  //   console.log($(this).scrollTop());
-  //   if ($(this).scrollTop())
-  // });
-
-  //   burgerMenu.addEventListener('click', function(e) {
-  //     e.preventDefault();
-
-  //     console.log('clicked');
-  //     burgerMenu.classList.toggle('opened');
-  //     test.classList.toggle('show');
-  //   });
-
-  $(window).on("scroll", function (e) {
-    if ($("#experience-section .modal-container").css("display") === "flex") {
-      e.preventDefault();
-      e.stopPropagation();
-      return false;
+$(window).on("load", () => {
+  $(window).on("resize", () => {
+    if ($(window).width() >= 768) {
+      // close dropdown menu (if open) when transitioning to tablet/desktop size
+      if ($(".dropdown-menu-container").hasClass("dropdown-menu-container--opened")) {
+        $(".dropdown-menu-container").removeClass("dropdown-menu-container--opened");
+        $(".nav-links-container").removeClass("nav-links-container--opened");
+      }
     }
   });
 
-  const experienceOneDescription = $("#experience-one--description");
-  const experienceTwoDescription = $("#experience-two--description");
-  const experienceThreeDescription = $("#experience-three--description");
+  $(window).on("click", (e) => {
+    // close dropdown (if open) if clicking outside of it
+    if ($(".dropdown-menu-container").hasClass("dropdown-menu-container--opened")) {
+      const dropdownMenu = $(".nav-links-container--opened");
+      const dropdownMenuTop = dropdownMenu.offset().top;
+      const dropdownMenuBottom = dropdownMenuTop + dropdownMenu.outerHeight();
 
-  // experienceOneDescription.addClass('hide');
-  // experienceTwoDescription.addClass('hide');
-  // experienceThreeDescription.addClass('hide');
+      if (e.pageY > dropdownMenuBottom) {
+        $(".dropdown-menu-container").removeClass("dropdown-menu-container--opened");
+        $(".nav-links-container").removeClass("nav-links-container--opened");
+      }
+    }
+  });
 
-  const experienceOne = $("#experience-1 .folder-icon");
-  const experienceTwo = $("#experience-2 .folder-icon");
-  const experienceThree = $("#experience-3 .folder-icon");
-  const experienceFour = $("#experience-4 .folder-icon");
+  revealNavbar();
+  revealIntroSection();
+  revealSkillsSection();
+  revealExperienceSection();
+  revealProjectsSection();
+  revealContactSection();
+});
 
-  const experienceOneIcon = $("#experience-1 .folder-icon");
-  const experienceTwoIcon = $("#experience-2 .folder-icon");
-  const experienceThreeIcon = $("#experience-3 .folder-icon");
-  const experienceFourIcon = $("#experience-4 .folder-icon");
+function revealNavbar() {
+  scrollReveal.reveal(".nav", { origin: "top", cleanup: true });
 
-  // $(".close-modal-icon").click(() => {
-  //   $("#experience-section .modal-container").css({ display: "none" });
-  //   $("body").css("overflow", "initial");
-  //   experienceOneIcon.removeClass("opened");
-  //   experienceTwoIcon.removeClass("opened");
-  //   experienceThreeIcon.removeClass("opened");
-  //   experienceFourIcon.removeClass("opened");
+  delay += 500;
 
-  //   $(".modal-container .experience-description").each((_, item) => {
-  //     $(item).addClass("hide");
-  //   });
-  // });
+  if ($(window).width() >= 768) {
+    // for tablet/desktop, cascade navbar links
+    $(".internal-link-container").each((_, item) => {
+      scrollReveal.reveal(item, {
+        origin: "top",
+        delay: delay,
+        cleanup: true,
+      });
 
-  $("#experience-section .modal-container").on("click", (e) => {
-    const modalContent = $("#experience-section .experience-description:not(.hide)");
+      delay += 100;
+    });
+
+    scrollReveal.reveal(".external-link-container", {
+      origin: "top",
+      delay: delay,
+      cleanup: true,
+    });
+  } else {
+    // for mobile, cascade hamburger menu bars
+    $(".dropdown-menu-container__bar").each((_, item) => {
+      scrollReveal.reveal(item, {
+        origin: "right",
+        delay: delay,
+        cleanup: true,
+      });
+
+      delay += 100;
+    });
+  }
+
+  addNavbarHandlers();
+}
+
+function addNavbarHandlers() {
+  $(".internal-link-container__link").each((_, item) => {
+    $(item).click(() => scrollToSection(item));
+  });
+
+  $(".dropdown-menu-container").click(() => {
+    $(".dropdown-menu-container").toggleClass("dropdown-menu-container--opened");
+    $(".nav-links-container").toggleClass("nav-links-container--opened");
+  });
+}
+
+function scrollToSection(item) {
+  const scrollSectionPrefix = $(item).attr("class").split(" ")[1].split("--")[1];
+  const sectionPos = $(`.${scrollSectionPrefix}-section`).offset().top;
+  const offsetHeight = sectionPos - $(".nav").outerHeight();
+
+  if ($(".dropdown-menu-container").hasClass("dropdown-menu-container--opened")) {
+    $(".dropdown-menu-container").removeClass("dropdown-menu-container--opened");
+    $(".nav-links-container").removeClass("nav-links-container--opened");
+  }
+
+  $("html, body").animate({ scrollTop: offsetHeight }, 500);
+}
+
+function revealIntroSection() {
+  delay += 500;
+
+  scrollReveal.reveal(".intro-section", {
+    origin: "left",
+    delay: delay,
+    afterReveal: () => {
+      setTimeout(() => {
+        $(".description-container__description span").addClass("description-container__description--underline");
+        $(".img-container__mask").addClass("img-container__mask--border");
+      }, 250);
+    },
+    cleanup: true,
+  });
+}
+
+function revealSkillsSection() {
+  scrollReveal.reveal(".skills-inner-container__header", { origin: "right", cleanup: true, });
+
+  scrollReveal.reveal(".skills-content-container", {
+    origin: "bottom",
+    afterReveal: () => {
+      setTimeout(() => {
+        $(".skills-section .skills-bar-container__rating--angular").addClass("skills-bar-container__rating--100");
+        $(".skills-section .skills-bar-container__rating--react").addClass("skills-bar-container__rating--75");
+        $(".skills-section .skills-bar-container__rating--html").addClass("skills-bar-container__rating--100");
+        $(".skills-section .skills-bar-container__rating--css").addClass("skills-bar-container__rating--75");
+        $(".skills-section .skills-bar-container__rating--javascript").addClass("skills-bar-container__rating--75");
+        $(".skills-section .skills-bar-container__rating--typescript").addClass("skills-bar-container__rating--75");
+        $(".skills-section .skills-bar-container__rating--python").addClass("skills-bar-container__rating--100");
+        $(".skills-section .skills-bar-container__rating--java").addClass("skills-bar-container__rating--75");
+        $(".skills-section .skills-bar-container__rating--sql").addClass("skills-bar-container__rating--50");
+      }, 250);
+    },
+    cleanup: true,
+  });
+}
+
+function revealExperienceSection() {
+  scrollReveal.reveal(".experience-inner-container__header", { origin: "top", cleanup: true, });
+  scrollReveal.reveal(".experience-inner-container__subheader", { origin: "bottom", cleanup: true, });
+
+  $(".experience-container").each((_, item) => {
+    scrollReveal.reveal(item, {
+      origin: "left",
+      afterReveal: () => $(".experience-section").css({ transform: "none" }),
+      cleanup: true,
+    });
+  });
+
+  addExperienceSectionHandlers();
+}
+
+function addExperienceSectionHandlers() {
+  $(".experience-container__icon").each((index, item) => {
+    $(item).on("click", (e) => openModalHandler(e, $(item), index + 1));
+  });
+
+  $(".experience-section .modal-container").on("click", (e) => {
+    const modalContent = $(".modal-experience-container--opened");
     const modalContentTop = modalContent.offset().top;
     const modalContentBottom = modalContentTop + modalContent.outerHeight();
     const modalContentLeft = modalContent.offset().left;
     const modalContentRight = modalContentLeft + modalContent.outerWidth();
 
-    const closeButton = $("#experience-section .experience-description:not(.hide) .close-modal-icon");
+    const closeButton = $(".modal-experience-container--opened .modal-experience-container__close-icon");
     const closeButtonTop = closeButton.offset().top;
     const closeButtonBottom = closeButtonTop + closeButton.outerHeight();
     const closeButtonLeft = closeButton.offset().left;
@@ -256,156 +187,75 @@ $(function () {
       e.pageY < closeButtonBottom;
 
     if (didClickOuterModal || didClickCloseButton) {
-      closeModal(experienceOneIcon, experienceTwoIcon, experienceThreeIcon, experienceFourIcon);
+      closeModal();
     }
   });
+}
 
-  experienceOne.on("click", function (e) {
-    e.preventDefault();
+function openModalHandler(e, iconElement, id) {
+  e.preventDefault();
 
-    // this may not be needed ...
-    if (experienceOneIcon.hasClass("opened")) {
-      $("body").css("overflow", "initial");
-    } else {
-      experienceOneIcon.addClass("opened");
-      $("#experience-section .modal-container").css({ display: "flex" });
-      $("#experience-1--description").removeClass("hide")
-      $("body").css("overflow", "hidden");
-    }
-  });
-
-  experienceTwo.on("click", function (e) {
-    e.preventDefault();
-
-    // this may not be needed ...
-    if (experienceTwoIcon.hasClass("opened")) {
-      $("body").css("overflow", "initial");
-    } else {
-      experienceTwoIcon.addClass("opened");
-      $("#experience-section .modal-container").css({ display: "flex" });
-      $("#experience-2--description").removeClass("hide")
-      $("body").css("overflow", "hidden");
-    }
-  });
-
-  experienceThree.on("click", function (e) {
-    e.preventDefault();
-
-    // this may not be needed ...
-    if (experienceThreeIcon.hasClass("opened")) {
-      $("body").css("overflow", "initial");
-    } else {
-      experienceThreeIcon.addClass("opened");
-      $("#experience-section .modal-container").css({ display: "flex" });
-      $("#experience-3--description").removeClass("hide")
-      $("body").css("overflow", "hidden");
-    }
-  });
-
-  experienceFour.on("click", function (e) {
-    e.preventDefault();
-
-    // this may not be needed ...
-    if (experienceFourIcon.hasClass("opened")) {
-      $("body").css("overflow", "initial");
-    } else {
-      experienceFourIcon.addClass("opened");
-      $("#experience-section .modal-container").css({ display: "flex" });
-      $("#experience-4--description").removeClass("hide")
-      $("body").css("overflow", "hidden");
-    }
-  });
-});
-
-function revealNavbarLinks() {
-  scrollReveal.reveal("#sticky-nav", { origin: "top", cleanup: true });
-
-  let delay = 500;
-
-  if ($(window).width() >= 768) {
-    // for tablet or desktop, cascade reveal navbar links
-    $(".navbar-link-container").each((_, item) => {
-      scrollReveal.reveal(item, {
-        origin: "top",
-        delay: delay,
-        cleanup: true
-      });
-
-      delay += 100;
-    });
-  } else {
-    // for mobile, cascade hamburger menu bars
-    $(".dropdown-menu-bar-container").each((_, item) => {
-      scrollReveal.reveal(item, {
-        origin: "right",
-        delay: delay,
-        cleanup: true
-      });
-
-      delay += 100;
-    });
+  if (!iconElement.hasClass("experience-container__icon--opened")) {
+    iconElement.addClass("experience-container__icon--opened");
+    $(".experience-section .modal-container").css({ display: "flex" });
+    $(`.modal-experience-container--${id}`).addClass("modal-experience-container--opened");
+    $("body").css("overflow", "hidden");
   }
-
-  delay += 500;
-
-  // reveal intro after navbar has been revealed
-  scrollReveal.reveal("#intro-section", {
-    origin: "left",
-    delay: delay,
-    afterReveal: (el) => {
-      setTimeout(() => {
-        $(".description-container span").addClass("shown");
-        $(".img-mask").addClass("draw");
-        $("body").css("overflow", "initial"); // allow scrolling again
-      }, 250);
-    },
-  });
-
-  // window resize listener for when dropdown is opened and change size ...
-
-  // $(window).resize(() => {
-  //   if ($(window).width() >= 768) {
-  //     console.log("greater");
-  //     $("#sticky-nav .links-container")
-  //       .removeClass("links-container--mobile")
-  //       .addClass("links-container--non-mobile");
-  //   } else {
-  //     console.log("less");
-  //     $("#sticky-nav .links-container")
-  //       .removeClass("links-container--non-mobile")
-  //       .addClass("links-container--mobile");
-  //   }
-  // });
 }
 
-function addNavbarClickEvents() {
-  // tablet and desktop navbar links
-  $(".navbar-link:not(.navbar-btn)").each((_, item) => {
-    const scrollSection = $(item).attr("id").split("--")[1];
-    const sectionPos = $(`#${scrollSection}-section`).offset().top;
-    const offsetHeight = sectionPos - $("#sticky-nav").outerHeight();
-
-    $(item).click(() => {
-      $("html, body").animate({ scrollTop: offsetHeight }, 500);
-    });
-  });
-
-  // mobile hamburger menu
-  $("#dropdown-menu").click((e) => {
-    $("#dropdown-menu").toggleClass("opened");
-    $("#links-container").toggleClass("opened");
-  });
-}
-
-function closeModal(experienceOneIcon, experienceTwoIcon, experienceThreeIcon, experienceFourIcon) {
-  $("#experience-section .modal-container").css({ display: "none" });
+function closeModal() {
+  $(".experience-section .modal-container").css({ display: "none" });
   $("body").css("overflow", "initial");
-  experienceOneIcon.removeClass("opened");
-  experienceTwoIcon.removeClass("opened");
-  experienceThreeIcon.removeClass("opened");
-  experienceFourIcon.removeClass("opened");
 
-  $(".modal-container .experience-description").each((_, item) => {
-    $(item).addClass("hide");
+  $(".experience-container__icon").each((_, item) => {
+    $(item).removeClass("experience-container__icon--opened");
+  });
+
+  $(".modal-container .modal-experience-container").each((_, item) => {
+    $(item).removeClass("modal-experience-container--opened");
+  });
+}
+
+function revealProjectsSection() {
+  scrollReveal.reveal(".projects-inner-container__header", { origin: "bottom", cleanup: true, });
+
+  $(".project-card-container").each((_, item) => {
+    scrollReveal.reveal(item, { origin: "left", cleanup: true, });
+  });
+}
+
+function revealContactSection() {
+  scrollReveal.reveal(".contact-inner-container__header", { origin: "top", cleanup: true, });
+  scrollReveal.reveal(".contact-description-container", { origin: "right", cleanup: true, });
+  scrollReveal.reveal(".contact-form-container", { origin: "left", cleanup: true, });
+
+  addContactFormSubmitHandler();
+}
+
+function addContactFormSubmitHandler() {
+  $(".contact-section .contact-form").submit(function (e) {
+    e.preventDefault();
+
+    const toEmail = $(".contact-form").attr("action");
+    const firstName = $(".contact-form__input--first-name").val();
+    const lastName = $(".contact-form__input--last-name").val();
+    const fromEmail = $(".contact-form__input--email").val();
+    const subject = $(".contact-form__input--subject").val();
+
+    let emailBody = $(".contact-form__textarea--body").val();
+
+    emailBody +=
+      "%0D%0A%0D%0A--------------------------------------------------%0D%0A";
+    emailBody += "%0D%0AFirst Name: " + firstName;
+    emailBody += "%0D%0ALast Name: " + lastName;
+    emailBody += "%0D%0AFrom: " + fromEmail;
+
+    $(".contact-form__input--first-name").val("");
+    $(".contact-form__input--last-name").val("");
+    $(".contact-form__input--email").val("");
+    $(".contact-form__input--subject").val("");
+    $(".contact-form__textarea--body").val("");
+
+    window.location = toEmail + "?subject=" + subject + "&body=" + emailBody;
   });
 }

@@ -1,34 +1,35 @@
-<section id="projects-section" class="projects-section">
-  <div class="wrapper-container">
-    <div class="projects-container">
-      <h1 class="header">Projects</h1>
-      <div class="content-container">
+<section class="projects-section">
+  <div class="projects-outer-container">
+    <div class="projects-inner-container">
+      <h1 class="projects-inner-container__header">Projects</h1>
+      <div class="projects-content-container">
         {% for item in site.data.projects %}
-        <div class="project-card-container">
-          <div class="project-container">
-            <p class="title">{{ item.project_title }}</p>
-            <p class="description">{{ item.project_description }}</p>
-            <div class="skills-container">
-              {% for subitem in item.project_skills %}
-              <p>{{ subitem }}</p>
-              {% endfor %}
-            </div>
-            <hr />
-            <div class="details-container">
-              <p class="tracking {{ item.status_class }}">
-                {{ item.project_status }}
-              </p>
-              <div class="spacer"></div>
-              <a
-                class="external-link"
-                href="{{ item.github_link }}"
-                target="_blank"
-              >
-                {% include _github.html %}
-              </a>
+          <div class="project-card-container">
+            <div class="project-container">
+              <p class="project-container__header">{{ item.title }}</p>
+              <p class="project-container__description">{{ item.description }}</p>
+              <div class="project-container__spacer"></div>
+              <div class="project-skills-container">
+                {% for skill in item.skills %}
+                  <p class="project-skills-container__item">{{ skill }}</p>
+                {% endfor %}
+              </div>
+              <hr />
+              <div class="project-details-container">
+                <p class="project-details-container__status project-details-container__status--{{ item.status_class }}">
+                  {{ item.status }}
+                </p>
+                <div class="project-details-container__spacer"></div>
+                <a
+                  class="project-details-container__link"
+                  href="{{ item.github_link }}"
+                  target="_blank"
+                >
+                  {% include _github.html %}
+                </a>
+              </div>
             </div>
           </div>
-        </div>
         {% endfor %}
       </div>
     </div>

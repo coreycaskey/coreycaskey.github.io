@@ -1,101 +1,81 @@
-.footer-section {
+.footer {
   padding: 1rem 2rem;
 
-  .footer-container {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-
-    min-width: 14.75rem;
-    max-width: 87.5rem;
-    height: 100%;
-    margin: 0 auto;
-
-    font-family: "Inconsolata";
-    font-size: 1rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: 1.4rem;
-
-    .copyright-tag {
-      color: black;
-      margin: 0;
-    }
-
-    .breakline {
-      background-color: black;
-      border-style: none;
-      height: 2px;
-      width: 100%;
-      max-width: 22rem;
-    }
-
-    .links-container {
-      display: flex;
-      flex-direction: column;
-
-      .footer-link {
-        text-decoration: none;
-        margin: 1rem auto;
-        transition: transform 0.5s;
-        color: black;
-
-        &:hover {
-          color: gray;
-          transform: translateY(-0.25rem);
-        }
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 25rem) {
-  .footer-section {
-    .footer-container {
-      .links-container {
-        flex-direction: row;
-
-        .footer-link {
-          margin: 1rem;
-        }
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 36rem) {
-  .footer-section {
-
-    .footer-container {
-      flex-direction: row;
-      justify-content: space-between;
-      height: 3rem;
-
-      .copyright {
-        margin: 0;
-      }
-
-      .breakline {
-        display: none;
-      }
-
-      .links-container {
-        .footer-link {
-          margin: 0;
-
-          &:not(:first-child) {
-            margin-left: 2rem;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .footer-section {
+  @include tablet {
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  min-width: 14.75rem;
+  max-width: 87.5rem;
+  height: 100%;
+  margin: 0 auto;
+
+  font-family: "Inconsolata";
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.4rem;
+
+  @include mobile-large {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 3rem;
+  }
+}
+
+.footer-container__copyright {
+  color: black;
+  margin: 0;
+}
+
+.footer-container__breakline {
+  background-color: black;
+  border-style: none;
+  height: 2px;
+  width: 100%;
+  max-width: 22rem;
+
+  @include mobile-large {
+    display: none;
+  }
+}
+
+.footer-links-container {
+  display: flex;
+  flex-direction: column;
+
+  @include mobile-400 {
+    flex-direction: row;
+  }
+}
+
+.footer-links-container__link {
+  text-decoration: none;
+  margin: 1rem auto;
+  transition: transform 0.5s;
+  color: black;
+
+  &:hover {
+    color: gray;
+    transform: translateY(-0.25rem);
+  }
+
+  @include mobile-400 {
+    margin: 1rem;
+  }
+
+  @include mobile-large {
+    margin: 0;
+
+    &:not(:first-child) {
+      margin-left: 2rem;
+    }
   }
 }

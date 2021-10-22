@@ -1,44 +1,35 @@
 - skill: Angular
-  rating_value: 100
-  rating_name: Very Comfortable
-  icon: ../assets/img/skills/angular.png
+  rating: Very Comfortable
+  icon: /assets/img/skills/angular.png
 
 - skill: React
-  rating_value: 25
-  rating_name: Novice
-  icon: ../assets/img/skills/react.png
+  rating: Comfortable
+  icon: /assets/img/skills/react.png
 
 - skill: HTML
-  rating_value: 100
-  rating_name: Very Comfortable
-  icon: ../assets/img/skills/html.png
+  rating: Very Comfortable
+  icon: /assets/img/skills/html.png
 
 - skill: CSS
-  rating_value: 75
-  rating_name: Comfortable
-  icon: ../assets/img/skills/css.png
+  rating: Comfortable
+  icon: /assets/img/skills/css.png
 
 - skill: Javascript
-  rating_value: 75
-  rating_name: Comfortable
-  icon: ../assets/img/skills/javascript.png
+  rating: Comfortable
+  icon: /assets/img/skills/javascript.png
 
 - skill: Typescript
-  rating_value: 75
-  rating_name: Comfortable
-  icon: ../assets/img/skills/typescript.png
+  rating: Comfortable
+  icon: /assets/img/skills/typescript.png
 
 - skill: Python
-  rating_value: 100
-  rating_name: Very Comfortable
-  icon: ../assets/img/skills/python.png
+  rating: Very Comfortable
+  icon: /assets/img/skills/python.png
 
 - skill: Java
-  rating_value: 75
-  rating_name: Comfortable
-  icon: ../assets/img/skills/java.png
+  rating: Comfortable
+  icon: /assets/img/skills/java.png
 
 - skill: SQL
-  rating_value: 50
-  rating_name: Familiar
-  icon: ../assets/img/skills/sql.png
+  rating: Familiar
+  icon: /assets/img/skills/sql.png

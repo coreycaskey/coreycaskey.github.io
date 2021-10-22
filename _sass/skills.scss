@@ -1,283 +1,168 @@
-.skills-section {
-  padding: 0 2rem;
+.skills-outer-container {
+  @extend %outer-container;
 
-  .wrapper-container {
-    display: flex;
-    margin: 0 auto;
-    min-width: 14.75rem;
-    max-width: 64rem;
+  max-width: $max-width--tablet;
+}
 
-    .skills-container {
-      width: 100%;
-      margin: 4rem 0;
-      display: flex;
-      flex-direction: column;
+.skills-inner-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: $large-margin--top-bottom;
 
-      .header {
-        font-family: "Reenie Beanie";
-        font-size: 4rem;
-        font-weight: 400;
-        color: black;
-        text-align: center;
-        margin: 0 0 2rem;
-      }
-
-      .content-container {
-        .scale-container {
-          display: flex;
-          align-items: flex-end;
-          margin-left: 2.5rem;
-
-          .spacer {
-            flex: 1 1 auto; // remove this
-          }
-
-          p {
-            font-family: "Inconsolata";
-            font-size: 1rem;
-            font-weight: 400;
-            letter-spacing: 1px;
-            line-height: 1.2rem;
-            text-align: center;
-          }
-        }
-
-        .skills-list {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-
-          font-family: "Inconsolata";
-          font-size: 1rem;
-          font-weight: 400;
-          color: black;
-          line-height: 1.2rem;
-          letter-spacing: 1px;
-
-          .skill-item {
-            display: flex;
-            align-items: center;
-            margin: 1rem 0;
-
-            .skill-name {
-              display: none;
-            }
-
-            .skill-logo-container {
-              flex-basis: 1.5rem;
-              margin-right: 1rem;
-              text-align: right;
-              display: flex;
-              align-items: center;
-              cursor: pointer;
-              position: relative;
-
-              &:hover {
-                .tooltip-text {
-                  visibility: visible;
-                  opacity: 1;
-                }
-              }
-
-              .tooltip-text {
-                visibility: hidden;
-                width: 120px;
-                background-color: #555;
-                color: #fff;
-                text-align: center;
-                border-radius: 6px;
-                padding: 5px 0;
-                position: absolute;
-                z-index: 1;
-                bottom: 125%;
-                left: 75%;
-                margin-left: -35px;
-                opacity: 0;
-                transition: opacity 0.3s;
-              }
-
-              .tooltip-text::after {
-                content: "";
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                margin-left: -35px;
-                border-width: 5px;
-                border-style: solid;
-                border-color: #555 transparent transparent transparent;
-              }
-            }
-
-            .skill-rating-bar {
-              height: 0.5rem;
-              background-color: rgba(0.5,0.5,0.5,0.10);
-              border-radius: 0.25rem;
-              flex: 1 1 auto;
-
-              .skill-rating {
-                display: block;
-                height: 0.5rem;
-                background-color: black;
-                border-radius: 0.25rem;
-                width: 0;
-
-                &.skill-rating--25 {
-                  width: 25%;
-                  transition: width 1s;
-                }
-
-                &.skill-rating--50 {
-                  width: 50%;
-                  transition: width 1s;
-                }
-
-                &.skill-rating--75 {
-                  width: 75%;
-                  transition: width 1s;
-                }
-
-                &.skill-rating--100 {
-                  width: 100%;
-                  transition: width 1s;
-                }
-              }
-            }
-
-            .skill-level {
-              // margin-left: 2rem;
-              // flex-basis: 9rem;
-              display: none;
-            }
-          }
-        }
-      }
-    }
+  @include tablet {
+    padding: $small-padding--left-right;
   }
 }
 
-@media screen and (min-width: 576px) {
-  .skills-section {
-    .wrapper-container {
-      .skills-container {
-        .content-container {
-          .scale-container {
-            display: none;
-          }
+.skills-inner-container__header {
+  @extend %section-header;
+}
 
-          .skills-list {
-            .skill-item {
-              .skill-level {
-                display: block;
-                margin: 0;
-                margin-left: 1rem;
-                flex-basis: 9rem;
-              }
-            }
-          }
-        }
-      }
-    }
+.scale-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-left: $spacing--small-plus-half;
+
+  @include mobile-large {
+    display: none;
   }
 }
 
-// @media screen and (min-width: 600px) {
-//   .skills-section {
-//     .wrapper-container {
-//       .skills-container {
-//         padding: 0 2rem;
-//       }
-//     }
-//   }
-// }
+.scale-container__skill-level {
+  font-family: $text-font--body;
+  font-size: $font-size--regular;
+  font-weight: $font-weight--regular;
+  line-height: $line-height--text;
+  text-align: center;
+}
 
-@media screen and (min-width: 768px) {
-  .skills-section {
-    // margin: 0 0 8rem;
-    padding: 0 2rem;
+.skills-list-container {
+  font-family: $text-font--body;
+  font-size: $font-size--regular;
+  font-weight: $font-weight--regular;
+  line-height: $line-height--text;
 
-    .wrapper-container {
-      .skills-container {
-        padding: 0 4rem;
-        box-sizing: border-box;
-        max-width: 64rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-        .header {
-          font-family: "Reenie Beanie";
-          font-size: 4rem;
-          font-weight: 400;
-          color: black;
-          text-align: center;
-        }
+.skills-item-container {
+  display: flex;
+  align-items: center;
+  margin: $extra-small-margin--top-bottom;
 
-        .content-container {
-          .skills-list {
-            .skill-item {
-              display: flex;
-              align-items: center;
-
-              .skill-name {
-                display: block;
-                flex-basis: 6rem;
-                margin-right: 2rem;
-                text-align: right;
-              }
-
-              .skill-logo-container {
-                // flex-basis: 6rem;
-                margin-right: 2rem;
-                // text-align: right;
-                display: none;
-              }
-
-              .skill-rating-bar {
-                height: 0.5rem;
-                background-color: rgba(0.5,0.5,0.5,0.10);
-                border-radius: 0.25rem;
-                flex: 1 1 auto;
-
-                .skill-rating {
-                  display: block;
-                  height: 0.5rem;
-                  background-color: black;
-                  border-radius: 0.25rem;
-
-                  &.skill-rating--25 {
-                    width: 25%;
-                  }
-
-                  &.skill-rating--50 {
-                    width: 50%;
-                  }
-
-                  &.skill-rating--75 {
-                    width: 75%;
-                  }
-
-                  &.skill-rating--100 {
-                    width: 100%;
-                  }
-                }
-              }
-
-              .skill-level {
-                margin-left: 2rem;
-              }
-            }
-          }
-        }
-
-      }
-    }
+  @include tablet {
+    align-items: center;
   }
 }
 
+.skills-item-container__name {
+  display: none;
 
-@keyframes loaddata {
-  from {
-    width: 0px;
+  @include tablet {
+    display: block;
+    flex-basis: $spacing--large;
+    margin-right: $spacing--small;
+    text-align: right;
+  }
+}
+
+.skills-logo-container {
+  display: flex;
+  align-items: center;
+  flex-basis: $spacing--smaller;
+  margin-right: $spacing--extra-small;
+  text-align: right;
+  position: relative;
+
+  &:hover {
+    .skills-logo-container__tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 
-  to {
-    width: 200px;
+  @include tablet {
+    margin-right: $spacing--small;
+    display: none;
+  }
+}
+
+.skills-logo-container__tooltip {
+  visibility: hidden;
+  width: 7.5rem;
+  background-color: $bg-color--gray;
+  color: white;
+  text-align: center;
+  border-radius: $border-radius;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 75%;
+  margin-left: -35px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  cursor: default;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -35px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: $bg-color--gray transparent transparent transparent;
+  }
+}
+
+.skills-bar-container {
+  height: 0.5rem;
+  background-color: rgba(0.5, 0.5, 0.5, 0.10);
+  border-radius: $border-radius;
+  flex: 1 1 auto;
+}
+
+.skills-bar-container__rating {
+  display: block;
+  height: 0.5rem;
+  background-color: $bg-color--black;
+  border-radius: $border-radius;
+  width: 0;
+  transition: width 1s;
+
+  &--25 {
+    width: 25%;
+  }
+
+  &--50 {
+    width: 50%;
+  }
+
+  &--75 {
+    width: 75%;
+  }
+
+  &--100 {
+    width: 100%;
+  }
+}
+
+.skills-item-container__skill-level {
+  display: none;
+
+  @include mobile-large {
+    display: block;
+    margin: 0;
+    margin-left: $spacing--extra-small;
+    flex-basis: 9rem;
+  }
+
+  @include tablet {
+    margin-left: $spacing--small;
   }
 }

@@ -1,23 +1,26 @@
-<section id="intro-section" class="intro-section">
-  <div class="wrapper-container">
-    <div class="intro-container">
-      <h1 class="header">Welcome!</h1>
-      <div class="content-container">
+<section class="intro-section">
+  <div class="intro-outer-container">
+    <div class="intro-inner-container">
+      <h1 class="intro-inner-container__header">Welcome</h1>
+      <div class="intro-content-container">
         <div class="description-container">
-          <p class="description">My name is <span>Corey&nbsp;Caskey</span></p>
-          <p class="description">
-            and I'm a software engineer at <span>Capital&nbsp;One</span>.
+          <p class="description-container__description">
+            My name is <span>Corey&nbsp;Caskey</span>
           </p>
-          <p class="description">
-            I've worked all across the tech stack and in very different industries
-            during my young career, but my true passion lies in
+          <p class="description-container__description">
+            and I'm a software engineer at <span>DraftKings</span>.
+          </p>
+          <p class="description-container__description">
+            I've worked all across the tech stack and in very different
+            industries during my career thus far, but my true passion lies in
             <span>frontend&nbsp;engineering</span>.
           </p>
         </div>
         <div class="img-container">
-          <div class="img-mask">
+          <div class="img-container__mask">
             <img
-              src="../assets/img/professional.png"
+              class="img-container__img"
+              src={{ "/assets/img/professional.png" | relative_url }}
               alt="Profile Picture"
               height="150px"
               width="150px"

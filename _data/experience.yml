@@ -1,50 +1,50 @@
 - company: Capital One
+  date: 2021
   title: Software Engineer — Full Stack Development
-  date: Present
   responsibilities:
-    - Updated AWS inventory collection processes to capture and expose cloud compliance data
-    - Deployed a compliance feed channel to publish data to an internal stream platform
-    - Configured a new API endpoint that improved data aggregation and retrievability to our UI
-    - Addressed bugs and performed maintenance on our enterprise cloud compliance application
+    - Updated inventory collection processes to capture new AWS service compliance data
+    - Deployed a channel feed via Lambdas to publish data to an internal streaming platform
+    - Addressed defects and optimizations in our enterprise cloud compliance React application
+    - Configured a Node API endpoint to improve aggregation and response speeds for our UI
   skills:
     - Node
     - React
-    - PostgreSQL
+    - SQL
+    - AWS
 
 - company: Capital One
-  title: Software Engineer — Front-end Development
   date: 2019 — 2021
+  title: Software Engineer — Frontend Development
   responsibilities:
-    - Helped migrate Small Business Card site pages to Angular and Hippo Bloomreach CMS
+    - Helped migrate Small Business Card site pages to Hippo Bloomreach CMS and Angular 9
     - Collaborated with UI/UX and business teams to scope designs into reusable components
     - Paired with developers to build new Angular components for expanding site capabilities
-    - Performed other duties, like implementing tracking pixels and creating Adobe Target tests
+    - Boosted metric collection by implementing tracking pixels and Adobe Target A/B tests
   skills:
     - Angular
     - HTML
-    - CSS
+    - SCSS
 
 - company: Verizon Connect
-  title: Intern — Product Development
   date: 2018
+  title: Intern — Product Development
   responsibilities:
-    - Developed a form application to manage and display statuses of critical product handler services
-    - Built a console application for programmatically updating vehicle data in the Oracle database
-    - Refactored static HTML templates for monthly customer marketing emails
+    - Delivered a form application to manage the statuses of critical product handler services
+    - Developed a console application to programmatically update vehicle data in an Oracle DB
+    - Refactored HTML email templates to ensure proper multi-device display and data rendering
   skills:
     - C#
     - .NET
     - Oracle
 
 - company: John Deere
-  title: Intern — Software Development
   date: 2017
+  title: Intern — Software Development
   responsibilities:
-    - Awesome
-    - Introduced a Node.js POC for defining schemas and producer-consumer methodologies to ingest data streams into our internal streaming platform
-    - Enhanced cloud processes by revising CloudFormation stack deployment templates and creating AWS CLI bash scripts to forward CloudWatch logs to Splunk
-    - Addressed various functionality defects within our enterprise React application—to improve the retrievability and accuracy of company cloud compliance data
+    - Built a React application to display European sales data to employees and product dealers
+    - Incorporated Java Spring Boot and PostgreSQL for secure data persistence and retrieval
+    - Designed algorithms to extract and aggregate sales data from the underlying Excel sheets
   skills:
     - React
     - Java
-    - PostgreSQL
+    - SQL

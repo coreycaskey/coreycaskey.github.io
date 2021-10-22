@@ -1,56 +1,57 @@
-<section class="experience-section" id="experience-section">
-  <div class="wrapper-container">
-    <div class="experience-container">
-      <h1 class="section-title">Experience</h1>
-      <h4 class="subtitle">Click to Learn More</h4>
-      <div class="content-container">
+<section class="experience-section">
+  <div class="experience-outer-container">
+    <div class="experience-inner-container">
+      <h1 class="experience-inner-container__header">Experience</h1>
+      <h4 class="experience-inner-container__subheader">Click to Learn More</h4>
+      <div class="experience-content-container">
         {% for item in site.data.experience %}
-        <div id="experience-{{ forloop.index }}" class="experience">
-          <img
-            class="folder-icon"
-            src="../assets/img/folder-closed-outlined.png"
-            alt="Folder Closed Icon Outlined"
-          />
-          <p class="folder-name">{{ item.company }}</p>
-          <p class="folder-date">{{ item.date }}</p>
-        </div>
+          <div
+            class="experience-container experience-container--{{ forloop.index }}"
+          >
+            <img
+              class="experience-container__icon"
+              src="{{ "/assets/img/folder-closed-outlined.png" | relative_url }}"
+              alt="Folder Closed Icon Outlined"
+              height="100px"
+              width="100px"
+            />
+            <p class="experience-container__name">{{ item.company }}</p>
+            <p class="experience-container__date">{{ item.date }}</p>
+          </div>
         {% endfor %}
       </div>
       <div class="modal-container">
-        <div class="modal-content">
+        <div class="modal-content-container">
           {% for item in site.data.experience %}
-          <div
-            id="experience-{{ forloop.index }}--description"
-            class="experience-description hide"
-          >
-            <div class="bar">
-              <img
-                class="close-modal-icon"
-                src="../assets/img/close-icon-outlined.png"
-                alt="Close Modal Icon"
-                width="24px"
-                height="24px"
-              />
-              <span>...</span>
-            </div>
-            <div class="modal-content-container">
-              <h3>{{ item.title }}</h3>
-              <div class="responsibilities-container">
-                <ul>
-                  {% for subitem in item.responsibilities %}
-                  <li>{{ subitem }}</li>
+            <div
+              class="modal-experience-container modal-experience-container--{{ forloop.index }}"
+            >
+              <div class="modal-experience-container__bar">
+                <img
+                  class="modal-experience-container__close-icon"
+                  src="{{ "/assets/img/close-icon-outlined.png" | relative_url }}"
+                  alt="Close Modal Icon"
+                  width="24px"
+                  height="24px"
+                />
+              </div>
+              <div class="modal-description-container">
+                <h3 class="modal-description-container__header">{{ item.title }}</h3>
+                <div class="experience-details-container">
+                  <ul class="experience-details-list-container">
+                    {% for responsibility in item.responsibilities %}
+                      <li class="experience-details-list-container__bullet">{{ responsibility }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <hr />
+                <div class="experience-skills-container">
+                  {% for skill in item.skills %}
+                    <p class="experience-skills-container__item">{{ skill }}</p>
                   {% endfor %}
-                </ul>
-              </div>
-
-              <hr />
-              <div class="skills-container">
-                {% for subitem in item.skills %}
-                <p>{{ subitem }}</p>
-                {% endfor %}
+                </div>
               </div>
             </div>
-          </div>
           {% endfor %}
         </div>
       </div>

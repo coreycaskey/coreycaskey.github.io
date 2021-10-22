@@ -1,31 +1,20 @@
-- project_title: Sudoku
-  project_description: A simple desktop application using JavaFX that allows you to play Sudoku.
-  project_skills:
-    - Java
-    - Maven
-    - CSS
-  project_status: COMPLETED
-  status_class: completed
-  github_link: www.google.com
-
-- project_title: Personal Website
-  project_description: A single-page website using basic HTML, CSS and jQuery.
-  project_skills:
+- title: Personal Website
+  description: A static website built with Jekyll that highlights key resume details.
+  skills:
     - HTML
-    - CSS
+    - SCSS
     - jQuery
     - Jekyll
-  project_status: COMPLETED
+  status: COMPLETED
   status_class: completed
-  github_link: www.google.com
+  github_link: https://github.com/ccaskey06/website
 
-- project_title: Muze
-  project_description: A mood-based music platform.
-  project_skills:
-    - MongDB
-    - Express
-    - Angular
-    - Node.js
-  project_status: IN PROGRESS
-  status_class: in-progress
-  github_link: www.google.com
+- title: Sudoku
+  description: A simple desktop application built with JavaFX and CSS for playing Sudoku.
+  skills:
+    - Java
+    - CSS
+    - Maven
+  status: COMPLETED
+  status_class: completed
+  github_link: https://github.com/ccaskey06/sudoku

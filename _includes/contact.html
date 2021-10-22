@@ -1,20 +1,20 @@
-<section id="contact-section" class="contact-section">
-  <div class="wrapper-container">
-    <div class="contact-container">
-      <h1 class="header">Contact</h1>
-      <div class="content-container">
-        <div class="description-container">
-          <p class="description">Hey there! I'm glad you made it this far.</p>
-          <p class="description">
-            I'm always interested in hearing more about new and exciting
-            technologies, opportunities and projects. If you want to chat, fill
-            out this lovely form right here...
+<section class="contact-section">
+  <div class="contact-outer-container">
+    <div class="contact-inner-container">
+      <h1 class="contact-inner-container__header">Contact</h1>
+      <div class="contact-content-container">
+        <div class="contact-description-container">
+          <p class="contact-description-container__description">Hey there! I'm glad you made it this far.</p>
+          <p class="contact-description-container__description">
+            I'm not currently looking for job opportunities, but I'm always
+            open to hearing more about interesting technologies or projects.
+            If you want to chat, fill out this lovely form right here...
           </p>
-          <p class="description">
+          <p class="contact-description-container__description">
             ...and I'll get back to you as soon as possible.
           </p>
         </div>
-        <div class="form-container">
+        <div class="contact-form-container">
           <form
             class="contact-form"
             autocomplete="off"
@@ -22,21 +22,19 @@
             method="post"
             enctype="text/plain"
           >
-            <div class="name-container">
+            <div class="contact-form__name-inputs">
               <input
                 autocomplete="off"
                 type="text"
                 placeholder="First Name"
-                class="form-input"
-                id="first-name-input"
+                class="contact-form__input contact-form__input--first-name"
                 required
               />
               <input
                 autocomplete="off"
                 type="text"
                 placeholder="Last Name"
-                class="form-input"
-                id="last-name-input"
+                class="contact-form__input contact-form__input--last-name"
                 required
               />
             </div>
@@ -44,27 +42,24 @@
               autocomplete="off"
               type="email"
               placeholder="Email"
-              class="form-input"
-              id="email-input"
+              class="contact-form__input contact-form__input--email"
               required
             />
             <input
               autocomplete="off"
               type="text"
               placeholder="Subject"
-              class="form-input"
-              id="subject-input"
+              class="contact-form__input contact-form__input--subject"
               required
             />
             <textarea
               autocomplete="off"
               rows="10"
               placeholder="Words...words...words..."
-              class="email-body"
-              id="email-body-input"
+              class="contact-form__textarea contact-form__textarea--body"
               required
             ></textarea>
-            <button class="form-button" type="submit">Let's Chat!</button>
+            <button class="contact-form__btn" type="submit">Let's Chat</button>
           </form>
         </div>
       </div>

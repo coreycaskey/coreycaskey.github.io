@@ -1,202 +1,177 @@
-.intro-section {
-  padding: $small-padding--left-right;
-  color: $text-color--black;
+.intro-outer-container {
+  @extend %outer-container;
 
-  .wrapper-container {
-    min-height: $intro-section-height--mobile;
+  min-height: $intro-section-height--mobile;
 
-    @include wrapper-container;
-    @include tablet {
-      min-height: $intro-section-height--tablet;
-    }
+  @include tablet {
+    min-height: $intro-section-height--tablet;
+  }
+}
+
+.intro-inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: $small-margin--top-bottom;
+
+  @include mobile-large {
+    max-width: $max-width--mobile;
   }
 
-  .intro-container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
+  @include tablet {
+    max-width: $max-width--tablet;
+  }
+}
+
+.intro-inner-container__header {
+  font-family: $text-font--header;
+  font-weight: $font-weight--regular;
+  font-size: $font-size--large;
+  line-height: $line-height--large;
+  text-align: center;
+  margin: 0 0 3rem;
+
+  @include mobile-large {
+    font-size: $font-size--larger;
+  }
+
+  @include tablet {
+    font-size: $font-size--extra-extra-large;
+    line-height: $line-height--extra-large;
+    margin-bottom: $spacing--regular;
+  }
+}
+
+.intro-content-container {
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-
-    @include mobile-large {
-      max-width: 36rem;
-    }
-
-    @include tablet {
-      max-width: 64rem;
-    }
-
-    .header {
-      font-family: $text-font--header;
-      font-weight: $regular-font-weight;
-      font-size: 4rem;
-      margin: 0 0 3rem;
-      letter-spacing: 1px;
-      line-height: 4rem;
-
-      @include mobile-large {
-        font-size: 5rem;
-      }
-
-      @include tablet {
-        font-size: 8rem;
-        letter-spacing: 1px;
-        line-height: 8rem;
-        margin-bottom: 4rem;
-      }
-    }
   }
+}
 
-  .content-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-basis: auto;
-    box-sizing: border-box;
+.description-container {
+  margin-bottom: $spacing--small;
 
-    @include tablet {
-      flex-direction: row;
-      justify-content: center;
-    }
-  }
-
-  .description-container {
+  @include tablet {
     flex-basis: 50%;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+    margin-right: $spacing--small;
+  }
+}
 
-    @include tablet {
-      margin-bottom: 0;
-      margin-right: 2rem;
-    }
+.description-container__description {
+  font-family: $text-font--body;
+  font-size: $font-size--regular;
+  font-weight: $font-weight--regular;
+  line-height: $line-height--text;
 
-    .description {
-      font-family: $text-font--body;
-      font-weight: $regular-font-weight;
-      letter-spacing: 1px;
-      line-height: 1.4rem;
+  margin-top: 0;
+  margin-bottom: $spacing--smaller;
 
-      margin-top: 0;
-      margin-bottom: 1.5rem;
-
-      @include mobile-400 {
-        font-size: 0.875rem;
-        line-height: 1.4rem;
-        margin-bottom: 1rem;
-      }
-
-      @include mobile-large {
-        font-size: 1rem;
-      }
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-
-      &:nth-child(2) {
-        margin-left: 2rem;
-      }
-    }
-
-    span {
-      position: relative;
-      padding-bottom: 4px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        height: 2px;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        background: black;
-        border-radius: 5px;
-        // animation: underline 1s forwards;
-        transition: width 1s;
-      }
-
-      &.shown {
-        &::after {
-          width: 100%;
-          // animation: underline 1s forwards;
-        }
-      }
-    }
+  &:nth-child(2) {
+    margin-left: $spacing--small;
   }
 
-  .img-container {
-    display: flex;
-    flex-basis: auto;
-    justify-content: center;
-    align-items: center;
+  &:last-child {
+    margin-bottom: 0;
   }
 
-  .img-mask {
-    padding: 0.5rem;
-    // border: 2px dashed black;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-
-    box-sizing: border-box;
+  span {
     position: relative;
+    padding-bottom: 4px;
 
+    &::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      background: $bg-color--black;
+      border-radius: $border-radius;
+      transition: width 1s;
+    }
+
+    &.description-container__description--underline {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.img-container__mask {
+  display: flex;
+  align-items: center;
+  padding: $spacing--extra-extra-small;
+  border-radius: $border-radius;
+  box-sizing: border-box;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    box-sizing: inherit;
+    position: absolute;
+    border: $border--regular-transparent;
+    width: 0;
+    height: 0;
+  }
+
+  // covers the top & right borders (expands right, then down)
+  &::before {
+    top: 0;
+    left: 0;
+  }
+
+  // covers the bottom & left borders (expands left, then up)
+  &::after {
+    bottom: 0;
+    right: 0;
+  }
+
+  &--border {
     &::before,
     &::after {
-      box-sizing: inherit;
-      content: '';
-      position: absolute;
-      border: 2px solid transparent;
-      width: 0;
-      height: 0;
+      border-radius: $border-radius;
+      width: 100%;
+      height: 100%;
     }
 
-    // This covers the top & right borders (expands right, then down)
     &::before {
-      top: 0;
-      left: 0;
+      border-top-color: $border-color--black;
+      border-right-color: $border-color--black;
+      transition:
+        width 0.25s ease-out,
+        height 0.25s ease-out 0.25s;
     }
 
-    // And this the bottom & left borders (expands left, then up)
     &::after {
-      bottom: 0;
-      right: 0;
+      border-bottom-color: $border-color--black;
+      border-left-color: $border-color--black;
+      transition:
+        border-color 0s ease-out 0.5s,
+        width 0.25s ease-out 0.5s,
+        height 0.25s ease-out 0.75s;
     }
+  }
 
-    &.draw {
-      // Hover styles
-      &::before,
-      &::after {
-        border-radius: 4px;
-        width: 100%;
-        height: 100%;
-      }
+  .img-container__img {
+    filter: grayscale(100%);
+    border-radius: $border-radius;
 
-      &::before {
-        border-top-color: black; // Make borders visible
-        border-right-color: black;
-        transition:
-          width 0.25s ease-out, // Width expands first
-          height 0.25s ease-out 0.25s; // And then height
-      }
-
-      &::after {
-        border-bottom-color: black; // Make borders visible
-        border-left-color: black;
-        transition:
-          border-color 0s ease-out 0.5s, // Wait for ::before to finish before showing border
-          width 0.25s ease-out 0.5s, // And then exanding width
-          height 0.25s ease-out 0.75s; // And finally height
-      }
-    }
-
-    img {
-      filter: grayscale(100%);
-      border-radius: 4px;
-
-      @include mobile-large {
-        width: 200px;
-        height: 200px;
-      }
+    @include mobile-large {
+      width: 200px;
+      height: 200px;
     }
   }
 }

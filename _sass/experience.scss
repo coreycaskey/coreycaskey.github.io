@@ -1,270 +1,212 @@
-.experience-section {
-  padding: 0 2rem;
+.experience-outer-container {
+  @extend %outer-container;
+
+  @include mobile-400 {
+    max-width: $max-width--mobile;
+  }
+
+  @include tablet {
+    max-width: $max-width--in-between;
+  }
+}
+
+.experience-inner-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: $large-margin--top-bottom;
+}
+
+.experience-inner-container__header {
+  @extend %section-header;
+}
+
+.experience-inner-container__subheader {
+  font-family: $text-font--body;
+  font-size: $font-size--regular;
+  font-weight: $font-weight--regular;
+  text-align: center;
+  margin: $extra-small-margin--top-bottom;
+}
+
+.experience-content-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 100%;
+  margin: $extra-small-margin--top-bottom;
+
+  font-family: $text-font--body;
+  font-size: $font-size--regular;
+  font-weight: $font-weight--regular;
   text-align: center;
 
-  .wrapper-container {
-    display: flex;
-    margin: 0 auto;
-    // max-width: 1000px;
+  @include mobile-400 {
+    flex-basis: 50%;
+  }
 
-    .experience-container {
-      width: 100%;
-      margin: 4rem 0;
-      // display: flex;
-
-      .section-title {
-        font-family: "Reenie Beanie";
-        font-size: 4rem;
-        font-weight: 400;
-        // margin: 4rem 0;
-        color: black;
-        text-align: center;
-        margin: 0 0 2rem;
-      }
-
-      .subtitle {
-        font-family: "Inconsolata";
-        font-size: 1rem;
-        font-weight: 400;
-        // margin: 4rem 0;
-        color: black;
-        text-align: center;
-        margin: 0 0 1rem;
-      }
-
-      .content-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        // position: relative;
-
-        .experience {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          flex-basis: 100%;
-          margin: 1rem 0;
-
-          .folder-icon {
-            height: 100px;
-            width: 100px;
-            cursor: pointer;
-
-            &:hover {
-              content: url("../img/folder-closed-filled.png");
-
-              // &.opened {
-              //   content: url("../img/folder-opened-filled.png");
-              // }
-            }
-
-            &.opened {
-              content: url("../img/folder-opened-outlined.png");
-            }
-          }
-
-          .folder-name {
-            font-family: "Inconsolata";
-            font-size: 1rem;
-            font-weight: 400;
-          }
-
-          .folder-date {
-            font-family: "Inconsolata";
-            font-size: 1rem;
-            font-weight: 400;
-            margin: 0;
-          }
-        }
-      }
-
-      .modal-container {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 9999; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        align-items: center;
-
-        .modal-content {
-          margin: 0 auto;
-          width: 80%;
-          max-width: 800px;
-          // background-color: lightgray;
-
-          .experience-description {
-            // margin: 4rem 0 0;
-            font-family: "Inconsolata";
-            font-size: 14px;
-            font-weight: 400;
-            border: 2px solid black;
-            padding: 2rem;
-            border-radius: 4px;
-            // max-height: 400px;
-            background-color: lightgray;
-            box-sizing: border-box;
-            position: relative;
-            overflow: auto;
-            display: block;
-            // overflow: hidden;
-            // transition: margin 0.5s, overflow 0.5s;
-
-            .bar {
-              position: absolute;
-              border-bottom: 2px solid black;
-              border-top-left-radius: 2px;
-              border-top-right-radius: 2px;
-              height: 2rem;
-              width: 100%;
-              top: 0;
-              left: 0;
-              margin-bottom: 2rem;
-
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              box-sizing: border-box;
-              padding: 0 0.5rem;
-
-              img:hover {
-                content: url("../img/close-icon-filled.png");
-                cursor: pointer;
-              }
-
-              span {
-                display: flex;
-                align-items: center;
-              }
-            }
-
-            .modal-content-container {
-              max-height: 400px;
-
-              h3 {
-                margin: 2rem auto 1rem;
-              }
-
-              .responsibilities-container {
-                display: flex;
-                margin: 1rem 0;
-
-                ul {
-                  padding-left: 1rem;
-                  text-align: left;
-                  margin: 1rem 0;
-                }
-
-                li:not(:last-child) {
-                  margin-bottom: 1rem;
-                }
-              }
-
-              .skills-container {
-                display: flex;
-                align-items: center;
-                justify-content: start;
-                margin-top: 2rem;
-
-                p {
-                  font-family: "Inconsolata";
-                  font-size: 0.75rem;
-                  font-weight: 200;
-                  margin: 0;
-                  margin-right: 0.5rem;
-                  color: black;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                  border-radius: 4px;
-                }
-              }
-
-              hr {
-                width: 100%;
-                margin: 0;
-                border: none;
-                background-color: black;
-                height: 2px;
-              }
-            }
-
-
-
-            &.hide {
-              // max-height: 0;
-              // overflow: hidden;
-              // padding: 0;
-              // border: none;
-              // margin: 0;
-              // transition: 0s;
-              display: none;
-            }
-
-            // .hide--animate {
-            //   max-height: 0;
-            //   overflow: hidden;
-            //   padding: 0;
-            //   border: none;
-            //   margin: 0;
-            //   // transition: 0.5s;
-            // }
-          }
-        }
-
-
-      }
-    }
+  @include tablet {
+    flex-basis: 25%;
   }
 }
 
-@media screen and (min-width: 400px) {
-  .experience-section {
-    .wrapper-container {
-      max-width: 576px;
+.experience-container__icon {
+  cursor: pointer;
 
-      .experience-container {
-        .content-container {
-          .experience {
-            flex-basis: 50%;
-          }
-        }
-      }
-    }
+  &:hover {
+    content: url("../img/folder-closed-filled.png");
+  }
+
+  &--opened {
+    content: url("../img/folder-opened-outlined.png");
   }
 }
 
-@media screen and (min-width: 768px) {
-  .experience-section {
-    .wrapper-container {
-      max-width: 800px;
+.experience-container__date {
+  margin: 0;
+}
 
-      .experience-container {
-        .content-container {
-          .experience {
-            flex-basis: 25%;
-          }
-        }
+.modal-container {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  align-items: center;
+}
 
-        .modal-container {
-          .modal-content {
-            .experience-description {
-              font-size: 1rem;
+.modal-content-container {
+  margin: $margin--center;
+  width: 80%;
+  max-width: $max-width--in-between;
+}
 
-              .skills-container {
-                p {
-                  font-family: "Inconsolata";
-                  font-size: 1rem;
-                  font-weight: 300;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+.modal-experience-container {
+  display: none;
+  border: $border--regular-black;
+  padding: $spacing--small;
+  border-radius: $border-radius;
+  background-color: $bg-color--lightgray;
+  box-sizing: border-box;
+  position: relative;
+  overflow: auto;
+
+  @include tablet {
+    font-size: $font-size--regular;
   }
+
+  &--opened {
+    display: block;
+  }
+}
+
+.modal-experience-container__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 $spacing--extra-extra-small;
+  margin-bottom: $spacing--small;
+  box-sizing: border-box;
+
+  position: absolute;
+  border-bottom: $border--regular-black;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  height: 2rem;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.modal-experience-container__close-icon {
+  &:hover {
+    content: url("../img/close-icon-filled.png");
+    cursor: pointer;
+  }
+}
+
+// .modal-description-container {
+
+//   font-size: $font-size--regular;
+//   font-weight: $font-weight--regular;
+
+// }
+
+.modal-description-container__header {
+  font-family: $text-font--body;
+  font-size: $font-size--regular;
+  font-weight: $font-weight--bold;
+  line-height: $line-height--text;
+  text-align: center;
+  margin: $spacing--small auto $spacing--extra-small;
+
+  @include mobile-400 {
+    font-size: $font-size--regular-plus-quarter;
+  }
+}
+
+.experience-details-container {
+  display: flex;
+  margin: $extra-small-margin--top-bottom;
+}
+
+.experience-details-list-container {
+  padding-left: $spacing--extra-small;
+  text-align: left;
+  margin: $extra-small-margin--top-bottom;
+
+  font-family: $text-font--body;
+  font-size: $font-size--small;
+  font-weight: $font-weight--regular;
+  line-height: $line-height--text;
+
+  @include mobile-400 {
+    font-size: $font-size--regular;
+  }
+}
+
+.experience-details-list-container__bullet:not(:last-child) {
+  margin-bottom: $spacing--extra-small;
+}
+
+.experience-skills-container {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-top: $spacing--small;
+}
+
+.experience-skills-container__item {
+  font-family: $text-font--body;
+  font-size: $font-size--small;
+  font-weight: $font-weight--light;
+  line-height: $line-height--text;
+  margin: 0;
+  margin-right: $spacing--extra-extra-small;
+  color: $text-color--black;
+  border: $border--small-black;
+  padding: $spacing--extra-extra-small;
+  border-radius: $border-radius;
+
+  @include mobile-400 {
+    font-size: $font-size--regular;
+  }
+}
+
+hr {
+  width: 100%;
+  margin: 0;
+  border: none;
+  background-color: $bg-color--black;
+  height: 2px;
 }

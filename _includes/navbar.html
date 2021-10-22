@@ -1,51 +1,31 @@
-<nav id="sticky-nav" class="sticky-nav">
-  <div class="sticky-nav-container">
-    <div id="dropdown-menu" class="dropdown-menu">
-      <div id="dropdown-menu-bar-container--top" class="dropdown-menu-bar-container">
-        <div
-          id="dropdown-menu-bar--top"
-          class="dropdown-menu-bar dropdown-menu-bar--top"
-        ></div>
+<nav class="nav">
+  <div class="nav-container">
+    <!-- mobile -->
+    <div class="dropdown-menu-container dropdown-menu-container--hover">
+      <div class="dropdown-menu-container__bar dropdown-menu-container__bar--top">
+        <div></div>
       </div>
-      <div id="dropdown-menu-bar-container--middle" class="dropdown-menu-bar-container">
-        <div
-          id="dropdown-menu-bar--middle"
-          class="dropdown-menu-bar dropdown-menu-bar--middle"
-        ></div>
+      <div class="dropdown-menu-container__bar dropdown-menu-container__bar--middle">
+        <div></div>
       </div>
-      <div id="dropdown-menu-bar-container--bottom" class="dropdown-menu-bar-container">
-        <div
-          id="dropdown-menu-bar--bottom"
-          class="dropdown-menu-bar dropdown-menu-bar--bottom"
-        ></div>
+      <div class="dropdown-menu-container__bar dropdown-menu-container__bar--bottom">
+        <div></div>
       </div>
     </div>
-    <div id="links-container" class="links-container">
+    <!-- all devices -->
+    <div class="nav-links-container">
       <div class="internal-links-container">
-        <div id="navbar-link-container--intro" class="navbar-link-container">
-          <a id="navbar-link--intro" class="navbar-link">About Me</a>
-        </div>
-        <div id="navbar-link-container--skills" class="navbar-link-container">
-          <a id="navbar-link--skills" class="navbar-link">Skills</a>
-        </div>
-        <div id="navbar-link-container--experience" class="navbar-link-container">
-          <a id="navbar-link--experience" class="navbar-link">Experience</a>
-        </div>
-        <div id="navbar-link-container--projects" class="navbar-link-container">
-          <a id="navbar-link--projects" class="navbar-link">Projects</a>
-        </div>
-        <div id="navbar-link-container--contact" class="navbar-link-container">
-          <a id="navbar-link--contact" class="navbar-link">Contact</a>
-        </div>
+        {% for item in site.data.navbar_links %}
+          <div class="internal-link-container">
+            <a class="internal-link-container__link internal-link-container__link--{{ item.class }}">
+              {{ item.name }}
+            </a>
+          </div>
+        {% endfor %}
       </div>
       <div class="external-links-container">
-        <div id="navbar-link-container--resume" class="navbar-link-container">
-          <a
-            id="navbar-link--resume"
-            class="navbar-link navbar-btn"
-            href="{{ site.resume }}"
-            target="_blank"
-          >
+        <div class="external-link-container">
+          <a class="external-link-container__link" href="{{ "/assets/resume.pdf" | relative_url }}" target="_blank">
             Resume
           </a>
         </div>

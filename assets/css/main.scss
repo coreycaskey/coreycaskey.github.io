@@ -1,0 +1,22 @@
+---
+---
+
+@import "_globals";
+@import "navbar";
+@import "intro";
+@import "skills";
+@import "experience";
+@import "projects";
+@import "contact";
+@import "footer";
+
+body {
+  margin: 0;
+  background-color: $bg-color--lightgray;
+  letter-spacing: 0.5px;
+}
+
+section {
+  padding: $small-padding--left-right;
+  color: $text-color--black;
+}
