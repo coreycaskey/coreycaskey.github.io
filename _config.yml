@@ -1,6 +1,9 @@
 # executable configurations
 
 port: 4444
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
 # global data configurations
 

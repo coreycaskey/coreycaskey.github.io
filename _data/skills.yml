@@ -1,9 +1,5 @@
-- skill: Angular
-  rating: Very Comfortable
-  icon: /assets/img/skills/angular.png
-
 - skill: React
-  rating: Comfortable
+  rating: Very Comfortable
   icon: /assets/img/skills/react.png
 
 - skill: HTML
@@ -11,23 +7,27 @@
   icon: /assets/img/skills/html.png
 
 - skill: CSS
-  rating: Comfortable
+  rating: Very Comfortable
   icon: /assets/img/skills/css.png
 
 - skill: Javascript
-  rating: Comfortable
+  rating: Very Comfortable
   icon: /assets/img/skills/javascript.png
 
 - skill: Typescript
-  rating: Comfortable
+  rating: Very Comfortable
   icon: /assets/img/skills/typescript.png
 
+- skill: Angular
+  rating: Comfortable
+  icon: /assets/img/skills/angular.png
+
 - skill: Python
-  rating: Very Comfortable
+  rating: Comfortable
   icon: /assets/img/skills/python.png
 
 - skill: Java
-  rating: Comfortable
+  rating: Familiar
   icon: /assets/img/skills/java.png
 
 - skill: SQL

@@ -7,7 +7,7 @@
     - Jekyll
   status: COMPLETED
   status_class: completed
-  github_link: https://github.com/ccaskey06/website
+  github_link: https://github.com/coreycaskey/coreycaskey.github.io
 
 - title: Sudoku
   description: A simple desktop application built with JavaFX and CSS for playing Sudoku.
@@ -17,4 +17,4 @@
     - Maven
   status: COMPLETED
   status_class: completed
-  github_link: https://github.com/ccaskey06/sudoku
+  github_link: https://github.com/coreycaskey/sudoku
